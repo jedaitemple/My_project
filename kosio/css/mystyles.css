@@ -1,0 +1,86 @@
+body {
+    font-family: helvetica, sans-serif;
+}
+
+@font-face {
+    font-family: 'icons';
+    src: url('icons.ttf')  format('truetype');
+}
+
+div, input {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 500px;
+    height: 350px;
+    padding: 35px 0;
+    background: -webkit-linear-gradient(left, #C2DD9A, #F5FBF0 50%, ); 
+}
+
+.form {
+    width: 365px; height: 274px;
+    margin: auto;
+    background: rgba(0,0,0,.23);
+    padding: 2px;
+}
+
+.header {
+    height: 44px;
+    line-height: 44px;
+    padding-left: 30px;
+    font-size: 20px;
+    background:  325px center no-repeat, -webkit-linear-gradient(top, rgb(253,253,253), rgb(198,203,199));
+}
+
+
+
+input[type=text], input[type=password] {
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding-left: 38px;
+    background:  -webkit-linear-gradient(45deg, #404040 0%, #404040 60%, #535353 60%, #494949);
+    color: #AAA;
+    border: 1px solid black;
+    transition: box-shadow .3s;
+}
+
+
+
+input[type=text] { margin-top: 36px; margin-bottom: 26px; }
+
+input[type=password] { margin-bottom: 36px; margin-top: 26px; }
+
+
+input[type=submit] {
+    float: right;
+    width: 134px; height: 31px;
+    border: 1px solid #B7DA7C;
+    background: 15px center no-repeat, -webkit-linear-gradient(top, #99CC4B, #73A52C);
+    font-weight: bold;
+    color: white;
+    text-align: right;
+    padding-right: 22px;
+}
+
+
+
+
+
+h1 {
+	font-size: 24px;
+	text-align: center;
+}
+#wrapper {
+	position: absolute;
+	width: 100%;
+	top: 30%;
+	margin-top: -50px;/* half of #content height*/
+}
+#form {
+	margin: auto;
+	width: 200px;
+	height: 100px;
+}
+
