@@ -12,7 +12,7 @@ if (isset($_POST['username'])) {
 	$paswd = mysqli_real_escape_string($dbCon, $paswd);
 	
 	
-	$sql = "SELECT id, username, password FROM members WHERE username = '$usname' AND activated = '1' LIMIT 1";
+	$sql = "SELECT id, username, password FROM kosio1 WHERE username = '$usname' AND activated = '1' LIMIT 1";
 	$query = mysqli_query($dbCon, $sql);
 	$row = mysqli_fetch_row($query);
 	$uid = $row[0];
