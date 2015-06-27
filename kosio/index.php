@@ -23,7 +23,7 @@ if (isset($_POST['username'])) {
 	if ($usname == $dbUsname && $paswd == $dbPassword) {
 		$_SESSION['username'] = $usname;
 		$_SESSION['id'] = $uid;
-		echo "YOU ARE LOGGED IN AS Kosio";
+		header("Location: user.php");
 	} else {
 		echo "<h2>Oops that username or password combination was incorrect.
 		<br /> Please try again.</h2>";
