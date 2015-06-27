@@ -37,45 +37,33 @@ if (isset($_POST['username'])) {
 <head>
 <meta charset="UTF-8">
 <title>Basic login system</title>
-<link rel="stylesheet" type="text/css" href="css/mystyles.css" media="screen" />
-
-
 <style type="text/css">
-body {
-    background:  #ffffff url("images/green.jpg") no-repeat;
+
+h1 {
+	font-size: 24px;
+	text-align: center;
 }
-
+#wrapper {
+	position: absolute;
+	width: 100%;
+	top: 30%;
+	margin-top: -50px;/* half of #content height*/
+}
+#form {
+	margin: auto;
+	width: 200px;
+	height: 100px;
+}
 </style>
-
-
 </head>
+ 
 <body>
-
 <div id="wrapper">
-
-
-<center>
-<h4>Best-News helps you to find the news faster in one place and share to the social sites</h4>
-</center>
-<center>
-<div class="container"> <!-- Unnecessary tag -->
-    <div class="form">
-        <div class="header">
-            Member Login
-        </div>
-        <div class="body">
-            <form id="form" action="index.php" method="post" enctype="multipart/form-data">
-                <input type="text" placeholder="Username" name="username"/><br>
-                <input type="password" placeholder="Password"  name="password"/><br>
-                <input type="submit" value="Login Now" name="Submit"/><br>
-			
-            </form>
-        </div>
-    </div>
-	<center>
-<a href="register.php"><input type="Submit"  value="SING UP" name="Register" ></a>
-</center>
-</div>
-</center>
+<h1>Simple PHP Login</h1>
+<form id="form" action="index.php" method="post" enctype="multipart/form-data">
+Username: <input type="text" name="username" /> <br />
+Password: <input type="password" name="password" /> <br />
+<input type="submit" value="Login" name="Submit" />
+</form>
 </body>
 </html>
