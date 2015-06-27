@@ -1,3 +1,3 @@
 <?php
-	$dbCon = mysqli_connect("localhost", "root", "", "log");
+	$dbCon = mysqli_connect("localhost", "root", "", "kosio");
 ?>
