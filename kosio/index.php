@@ -36,34 +36,61 @@ if (isset($_POST['username'])) {
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Basic login system</title>
-<style type="text/css">
+<title>BEst NEws login</title>
+<link rel="stylesheet" type="text/css" href="css/mystyles.css" media="screen" />
 
-h1 {
-	font-size: 24px;
-	text-align: center;
+
+<style type="text/css">
+body {
+    background:  #ffffff url("images/green.jpg") no-repeat;
 }
-#wrapper {
-	position: absolute;
-	width: 100%;
-	top: 30%;
-	margin-top: -50px;/* half of #content height*/
-}
-#form {
-	margin: auto;
-	width: 200px;
-	height: 100px;
-}
+
 </style>
+
+
 </head>
- 
 <body>
+<center>
+<p style="font-size: 16px; font-weight: bold; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3);">Add to chrome <span class="e3o0356g51" id="e3o0356g51_6" style="height: 16px;">
+			<a href="#" onclick="www.google.bg"><img src="images/button_google.png" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
+			<style="font-size: 16px; font-weight: bold; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3);">Add to facebook <span class="e3o0356g51" id="e3o0356g51_6" style="height: 16px;">
+						 <a href="#" onclick="www.google.bg"><img src="images/facebook.jpg"  style="margin: 3px 4px 0 0; width: 24x; height: 24px;"></a>
+</center>
+
+			<center>
+<td align="center" valign="middle" colspan="3" style="height: 120px;" class="notranslate">
+                <div>
+                    <p style="font-family: 'Arvo', 'Corbel', 'Calibri', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Myriad', 'Verdana', sans-serif; font-size: 28px; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3); line-height: 28px;">Change the way you read the <span class="e3o0356g51" id="e3o0356g51_7" style="height: 28px;">news</span>.</p><br>
+                    <p style="font-size: 16px; font-weight: bold; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3);">The <span class="e3o0356g51" id="e3o0356g51_6" style="height: 16px;">Best News</span> <span class="e3o0356g51" id="e3o0356g51_1" style="height: 16px;">Web</span> App. Your personal news stream. Free.</p>
+                </div>
+            </td>
+</center>
+
 <div id="wrapper">
-<h1>Simple PHP Login</h1>
-<form id="form" action="index.php" method="post" enctype="multipart/form-data">
-Username: <input type="text" name="username" /> <br />
-Password: <input type="password" name="password" /> <br />
-<input type="submit" value="Login" name="Submit" />
-</form>
+<center>
+<div class="container"> <!-- Unnecessary tag -->
+    <div class="form">
+        <div class="header">
+            Member Login
+        </div>
+        <div class="body">
+            <form id="form" action="index.php" method="post" enctype="multipart/form-data">
+                <input type="text" placeholder="Username" name="username"/><br>
+                <input type="password" placeholder="Password"  name="password"/><br>
+                <input type="submit" value="Login Now" name="Submit"/><br>
+				
+				<br><p style="font-size: 16px; font-weight: bold; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3);">SIGN UP WITH <span class="e3o0356g51" id="e3o0356g51_6" style="height: 16px;"></br>
+			<a href="#" onclick="www.google.bg"><img src="images/button_google.png" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
+			 <a href="#" onclick="www.google.bg"><img src="images/facebook.jpg"  style="margin: 3px 4px 0 0; width: 24x; height: 24px;"></a>
+			 <a href="#" onclick="www.google.bg"><img src="images/t.png"  style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
+			<a href="#" onclick="www.google.bg"><img src="images/link.png"  style="margin: 3px 4px 0 0; width: 24x; height: 24px;"></a>
+			</form>
+        </div>
+    </div>
+	<center>
+<a href="register.php"><input type="Submit"  value="SING UP" name="Register" ></a>
+</center>
+</div>
+</center>
 </body>
 </html>
