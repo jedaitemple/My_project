@@ -18,6 +18,16 @@ if (isset($_SESSION['id'])) {
 </head>
 
 <body>
+
+
+
+
+
+
+
+
+
+
 <?php
 	echo $result;
 ?>
