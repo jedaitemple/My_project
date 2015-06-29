@@ -24,7 +24,7 @@ if (isset($_SESSION['id'])) {
         <div class="row">
             <div class="twelve columns" id="imenu">
             <div id="nav" class="nine columns">
-             <div id="home"><a href="#"><img src="http://4.bp.blogspot.com/-btThtilNthE/T6dLHDZq9tI/AAAAAAAAAiw/E6bSVbOCeH4/s320/home.png" alt="home"></a></div>                           
+             <div id="home"><a href="#"><img src="images/tivenews.gif" alt="home"></a></div>                           
      <ul id="nav_menu">
         <li><a href="#">Refresh</a>
              

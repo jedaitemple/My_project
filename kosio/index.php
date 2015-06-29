@@ -50,7 +50,13 @@ body {
 
 </head>
 <body>
+   <div id="home"><a href="#"><img src="images/tivenews.gif" alt="home"></a></div>  
+
+
 <center>
+
+
+
 <p style="font-size: 16px; font-weight: bold; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3);">Add to chrome <span class="e3o0356g51" id="e3o0356g51_6" style="height: 16px;">
 			<a href="#" onclick="www.google.bg"><img src="images/button_google.png" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
 			<style="font-size: 16px; font-weight: bold; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3);">Add to facebook <span class="e3o0356g51" id="e3o0356g51_6" style="height: 16px;">
