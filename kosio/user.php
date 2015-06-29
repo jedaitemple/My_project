@@ -16,6 +16,7 @@ if (isset($_SESSION['id'])) {
 <meta charset="UTF-8">
 <title><?php echo $usname ;?> - Best news</title>
 <link rel="stylesheet" type="text/css" href="css/menu.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
 
 </head>
 
@@ -51,7 +52,7 @@ if (isset($_SESSION['id'])) {
 		<div class="three columns">
 
  <form method="get" class="searchform">
-     <div id="magnify"><img src="http://1.bp.blogspot.com/-Z-PCrVPeUKk/T6dLVTq-8ZI/AAAAAAAAAi8/n2DMxFGILwE/s320/magnify.png" alt="magnify"></div>
+     <div id="magnify"><img src="images/m.png" alt="magnify"></div>
      <div><input name="s" class="s" value="Search" id="searchsubmit" onfocus="if (this.value == 'Search') this.value = '';" type="text"></div>
      <div><input class="searchsubmit" value="" type="submit"></div>
  </form>          
@@ -61,6 +62,32 @@ if (isset($_SESSION['id'])) {
                      </div>
      </div>
  </div>
-</body>
+ 
+ <br><div id='cssmenu'></br>
+<ul>
+
+
+	<li><a href='#'>Create new News</a></li>
+	   <li><a href='#'>Водещи Новини в България</a></li>
+	   <li><a href='#'>Водещи Новини по света</a></li>
+   <li><a href='#'>Politics and world</a></li>
+   <li class='#'><a href='#'>Business and finace</a>
+      <li class='#'><a href='#'>Sports</a>
+   <li><a href='#'>Culture and entertainment</a></li>
+   <li><a href='#'>Science and Technology</a></li>
+     <li><a href='#'> Travel</a></li>
+	   <li><a href='#'>Health</a></li>
+		  <li><a href='#'>Lifestyle and fashion</a></li>
+		 <li><a href='#'>Environment</a></li>
+		  <li><a href='#'>Satire</a></li>
+		  <li><a href='#'>Comics</a></li>
+		  
+	   </ul>
+</div>
+ 
+ </body>
+
+
+
 
 </html>

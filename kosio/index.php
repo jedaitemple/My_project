@@ -24,10 +24,7 @@ if (isset($_POST['username'])) {
 		$_SESSION['username'] = $usname;
 		$_SESSION['id'] = $uid;
 		header("Location: user.php");
-	} else {
-		echo "<h2>Oops that username or password combination was incorrect.
-		<br /> Please try again.</h2>";
-	}
+	} 
 	
 }
 ?>
@@ -81,8 +78,8 @@ body {
         </div>
         <div class="body">
             <form id="form" action="index.php" method="post" enctype="multipart/form-data">
-                <input type="text" placeholder="Username" name="username"/><br>
-                <input type="password" placeholder="Password"  name="password"/><br>
+                <input type="text" placeholder="Username" name="username" required/><br>
+                <input type="password" placeholder="Password"  name="password" required/><br>
                 <input type="submit" value="Login Now" name="Submit"/><br>
 				
 				<br><p style="font-size: 16px; font-weight: bold; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3);">SIGN UP WITH <span class="e3o0356g51" id="e3o0356g51_6" style="height: 16px;"></br>
