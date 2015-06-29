@@ -57,9 +57,7 @@ body {
 		   <div id="home"><a href="#"><img src="images/tivenews.gif" alt="home"></a></div>  
 		
 		
-		<form action = "index.php" align= "right" >
-			<input class="button" style ="width:100px; font-size: 17px;;" type = "submit" name = "submit" value = "Login" />
-		</form>
+		
 	
 		<div id="form">
 			<form align = "center" action = "register.php" method = "POST">
@@ -70,7 +68,9 @@ body {
 				<input class = "button" type = "submit" value = "Register" name = "submit" />
 			</form>	
 		</div>
-		
+		<form action = "index.php" align= "right" >
+			<input class="button" style ="width:100px; font-size: 17px;;" type = "submit" name = "submit" value = "Login" />
+		</form>
 		</body>
 </html>		
 		
