@@ -10,6 +10,38 @@ if (isset($_SESSION['id'])) {
 	$result = "You are not logged in yet";
 }
 ?>
+<?php
+    $ch = curl_init('http://www.espnfc.com/copa-america/83/blog/post/2508492/eduardo-vargas-is-lighting-up-copa-america-for-chile');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36');
+
+    $res = curl_exec($ch);
+
+    if ($res === false) {
+        die('error: ' . curl_error($ch));
+    }
+
+    curl_close($ch);
+
+    $d = new DOMDocument();
+    @$d->loadHTML($res);
+
+    $output = array(
+        'title' => '',
+    );
+
+    $x = new DOMXPath($d);
+
+    $title = $x->query("//title");
+    if ($title->length > 0) {
+        $output['title'] = $title->item(0)->textContent;
+    }
+	
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,13 +141,15 @@ style="background-image: url(http://espn.go.com/favicon.ico);" data-url="http://
 <p id="source-5710-0" class="source" title="Copyright 2015 ESPN Inc.">ESPN.com - Tennis</p></div>
  <class="fa fa-globe icon activityimg" data-original-title=""
  title=""></i></a></div><a id="itemlink-5710-0"
- class="itemlink" href="http://en.espn.co.uk/tennis/sport/story/215021.html" 
+ class="itemlink" href="http://www.espnfc.com/copa-america/83/blog/post/2508492/eduardo-vargas-is-lighting-up-copa-america-for-chile" 
  <span><div class="headlinewrapper"><p id="headline-5710-0"
- class="headline">Federer won 15th major</p>
+ class="headline"><?php print_r($output);  ?></p>
  </div><p id="date-5710-0" 
  class="date">15 mins ago</p>
  
  
+ 
+
  </body>
 
 
