@@ -9,39 +9,6 @@ if (isset($_SESSION['id'])) {
 } else {
 	$result = "You are not logged in yet";
 }
-$sql = "SELECT number,link,username,topic FROM link";
-	$query = mysqli_query($dbCon, $sql);
-	$row = mysqli_fetch_row($query);
-	$uid = $row[0];
-	$dblink = $row[1];
-	$dbusername = $row[2];
-	$dbtopic = $row[3];
-    $ch = curl_init($dblink);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36');
-
-    $res = curl_exec($ch);
-
-    if ($res === false) {
-        die('error: ' . curl_error($ch));
-    }
-
-    curl_close($ch);
-
-    $d = new DOMDocument();
-    @$d->loadHTML($res);
-
-    $output = array(
-        'title' => '',
-    );
-
-    $x = new DOMXPath($d);
-
-    $title = $x->query("//title");
-    if ($title->length > 0) {
-        $output['title'] = $title->item(0)->textContent;
-    }
 ?>
 
 
@@ -124,6 +91,41 @@ $sql = "SELECT number,link,username,topic FROM link";
 	   </ul>
 </div>
 
+<?php
+$sql = "SELECT number,link,username,topic FROM link";
+	$query = mysqli_query($dbCon, $sql);
+	$row = mysqli_fetch_row($query);
+	$uid = $row[0];
+	$dblink = $row[1];
+	$dbusername = $row[2];
+	$dbtopic = $row[3];
+    $ch = curl_init($dblink);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36');
+
+    $res = curl_exec($ch);
+
+    if ($res === false) {
+        die('error: ' . curl_error($ch));
+    }
+
+    curl_close($ch);
+
+    $d = new DOMDocument();
+    @$d->loadHTML($res);
+
+    $output = array(
+        'title' => '',
+    );
+
+    $x = new DOMXPath($d);
+
+    $title = $x->query("//title");
+    if ($title->length > 0) {
+        $output['title'] = $title->item(0)->textContent;
+    }
+?>
 
 
  
@@ -144,6 +146,44 @@ style="background-image: url(http://espn.go.com/favicon.ico);" data-url="http://
  </div><p id="date-5710-0" 
  class="date">15 mins ago</p>
  
+
+ 
+ 
+ <?php
+$sql = "SELECT number,link,username,topic FROM link";
+	$query = mysqli_query($dbCon, $sql);
+	$row = mysqli_fetch_row($query);
+	$uid = $row[0];
+	$dblink = $row[1];
+	$dbusername = $row[2];
+	$dbtopic = $row[3];
+    $ch = curl_init($dblink);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36');
+
+    $res = curl_exec($ch);
+
+    if ($res === false) {
+        die('error: ' . curl_error($ch));
+    }
+
+    curl_close($ch);
+
+    $d = new DOMDocument();
+    @$d->loadHTML($res);
+
+    $output = array(
+        'title' => '',
+    );
+
+    $x = new DOMXPath($d);
+
+    $title = $x->query("//title");
+    if ($title->length > 0) {
+        $output['title'] = $title->item(0)->textContent;
+    }
+?>
 
  
   <div id="content" name="content" tabindex="1" class="notranslate blur" style="right: 10px;"></br>
