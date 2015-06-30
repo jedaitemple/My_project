@@ -14,10 +14,18 @@ if (isset($_SESSION['id'])) {
 <html>
 <head>
 <meta charset="UTF-8">
+
+
+
+
+
+
+
 <title><?php echo $usname ;?> - Best news</title>
 <link rel="stylesheet" type="text/css" href="css/menu.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/kosio.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
-
+<link rel="stylesheet" type="text/css" href="css/user.css" media="screen" />
 </head>
 
 <body>
@@ -57,17 +65,19 @@ if (isset($_SESSION['id'])) {
      <div><input class="searchsubmit" value="" type="submit"></div>
  </form>          
 
-
  </div>
                      </div>
      </div>
  </div>
+ <center>
+  <h1>Top News</h1>
+ </center>
  
  <br><div id='cssmenu'></br>
 <ul>
 
 
-	<li><a href='#'>Create new News</a></li>
+	<li><a href='#'>Add new News</a></li>
 	   <li><a href='#'>Водещи Новини в България</a></li>
 	   <li><a href='#'>Водещи Новини по света</a></li>
    <li><a href='#'>Politics and world</a></li>
@@ -84,10 +94,31 @@ if (isset($_SESSION['id'])) {
 		  
 	   </ul>
 </div>
+
+
+
+ 
+ <div id="content" name="content" tabindex="1" class="notranslate blur" style="right: 10px;"></br>
+<li style="display: inline;" class="keynav withoutfocus">
+<div class="press">
+<div id="titlebar-5710-0" class="titlebar">
+<img src="https://duh8wcwur1xop.cloudfront.net/images/favicon_overlay.png" alt="" align="absmiddle" id="favicon-5710-0" 
+class="favicon" 
+style="background-image: url(http://espn.go.com/favicon.ico);" data-url="http://espn.go.com/favicon.ico">
+<div class="sourcewrapper">
+<p id="source-5710-0" class="source" title="Copyright 2015 ESPN Inc.">ESPN.com - Tennis</p></div>
+ <class="fa fa-globe icon activityimg" data-original-title=""
+ title=""></i></a></div><a id="itemlink-5710-0"
+ class="itemlink" href="http://en.espn.co.uk/tennis/sport/story/215021.html" 
+ <span><div class="headlinewrapper"><p id="headline-5710-0"
+ class="headline">Federer won 15th major</p>
+ </div><p id="date-5710-0" 
+ class="date">15 mins ago</p>
+ 
  
  </body>
 
 
 
-
+ 
 </html>
