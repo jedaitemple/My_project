@@ -4,7 +4,7 @@ session_start();
 if (isset($_POST['username'])) {
         
 	include_once("dbConnect.php");
-	
+	include_once("Connect.php");
         $usname = strip_tags($_POST['username']);
 	$paswd = strip_tags($_POST['password']);
 	

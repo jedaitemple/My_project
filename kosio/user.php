@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include_once("dbConnect.php");
 if (isset($_SESSION['id'])) {
 	// Put stored session variables into local PHP variable
 	$uid = $_SESSION['id'];
@@ -9,9 +9,14 @@ if (isset($_SESSION['id'])) {
 } else {
 	$result = "You are not logged in yet";
 }
-?>
-<?php
-    $ch = curl_init('http://www.espnfc.com/copa-america/83/blog/post/2508492/eduardo-vargas-is-lighting-up-copa-america-for-chile');
+$sql = "SELECT number,link,username,topic FROM link";
+	$query = mysqli_query($dbCon, $sql);
+	$row = mysqli_fetch_row($query);
+	$uid = $row[0];
+	$dblink = $row[1];
+	$dbusername = $row[2];
+	$dbtopic = $row[3];
+    $ch = curl_init($dblink);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36');
@@ -37,7 +42,6 @@ if (isset($_SESSION['id'])) {
     if ($title->length > 0) {
         $output['title'] = $title->item(0)->textContent;
     }
-	
 ?>
 
 
@@ -46,13 +50,6 @@ if (isset($_SESSION['id'])) {
 <html>
 <head>
 <meta charset="UTF-8">
-
-
-
-
-
-
-
 <title><?php echo $usname ;?> - Best news</title>
 <link rel="stylesheet" type="text/css" href="css/menu.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/kosio.css" media="screen" />
@@ -102,7 +99,7 @@ if (isset($_SESSION['id'])) {
      </div>
  </div>
  <center>
-  <h1>Top News</h1>
+  <h1>All News</h1>
  </center>
  
  <br><div id='cssmenu'></br>
@@ -147,7 +144,24 @@ style="background-image: url(http://espn.go.com/favicon.ico);" data-url="http://
  </div><p id="date-5710-0" 
  class="date">15 mins ago</p>
  
+
  
+  <div id="content" name="content" tabindex="1" class="notranslate blur" style="right: 10px;"></br>
+<li style="display: inline;" class="keynav withoutfocus">
+<div class="press">
+<div id="titlebar-5710-0" class="titlebar">
+<img src="https://duh8wcwur1xop.cloudfront.net/images/favicon_overlay.png" alt="" align="absmiddle" id="favicon-5710-0" 
+class="favicon" 
+style="background-image: url(http://espn.go.com/favicon.ico);" data-url="http://espn.go.com/favicon.ico">
+<div class="sourcewrapper">
+<p id="source-5710-0" class="source" title="Copyright 2015 ESPN Inc.">ESPN.com - Tennis</p></div>
+ <class="fa fa-globe icon activityimg" data-original-title=""
+ title=""></i></a></div><a id="itemlink-5710-0"
+ class="itemlink" href="http://www.espnfc.com/copa-america/83/blog/post/2508492/eduardo-vargas-is-lighting-up-copa-america-for-chile" 
+ <span><div class="headlinewrapper"><p id="headline-5710-0"
+ class="headline"><?php print_r($output);  ?></p>
+ </div><p id="date-5710-0" 
+ class="date">15 mins ago</p>
  
 
  </body>
