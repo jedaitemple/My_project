@@ -81,9 +81,9 @@ body {
 <ul>
 
 
-	<li><a href='#'>Add new News</a></li>
-	   <li><a href='#'>Водещи Новини в България</a></li>
-	   <li><a href='#'>Водещи Новини по света</a></li>
+	<li><a href='addnews.php'>Add new News</a></li>
+	   <li><a href='#'>topnews in Bulgaria</a></li>
+	   <li><a href='#'>Topn news around the world</a></li>
    <li><a href='#'>Politics and world</a></li>
    <li class='#'><a href='#'>Business and finace</a>
       <li class='#'><a href='#'>Sports</a>
