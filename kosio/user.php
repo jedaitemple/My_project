@@ -22,6 +22,14 @@ if (isset($_SESSION['id'])) {
 <link rel="stylesheet" type="text/css" href="css/kosio.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/user.css" media="screen" />
+<style type="text/css">
+body {
+    background:  #ffffff url("images/green.jpg") no-repeat;
+}
+
+</style>
+
+
 </head>
 
 <body>
@@ -91,122 +99,81 @@ if (isset($_SESSION['id'])) {
 	   </ul>
 </div>
 
-<?php
-$sql = "SELECT number,link,username,topic FROM link";
-	$query = mysqli_query($dbCon, $sql);
-	$row = mysqli_fetch_row($query);
-	$uid = $row[0];
-	$dblink = $row[1];
-	$dbusername = $row[2];
-	$dbtopic = $row[3];
-    $ch = curl_init($dblink);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36');
-
-    $res = curl_exec($ch);
-
-    if ($res === false) {
-        die('error: ' . curl_error($ch));
-    }
-
-    curl_close($ch);
-
-    $d = new DOMDocument();
-    @$d->loadHTML($res);
-
-    $output = array(
-        'title' => '',
-    );
-
-    $x = new DOMXPath($d);
-
-    $title = $x->query("//title");
-    if ($title->length > 0) {
-        $output['title'] = $title->item(0)->textContent;
-    }
-?>
-
-
- 
- <div id="content" name="content" tabindex="1" class="notranslate blur" style="right: 10px;"></br>
-<li style="display: inline;" class="keynav withoutfocus">
-<div class="press">
-<div id="titlebar-5710-0" class="titlebar">
-<img src="https://duh8wcwur1xop.cloudfront.net/images/favicon_overlay.png" alt="" align="absmiddle" id="favicon-5710-0" 
-class="favicon" 
-style="background-image: url(http://espn.go.com/favicon.ico);" data-url="http://espn.go.com/favicon.ico">
-<div class="sourcewrapper">
-<p id="source-5710-0" class="source" title="Copyright 2015 ESPN Inc.">ESPN.com - Tennis</p></div>
- <class="fa fa-globe icon activityimg" data-original-title=""
- title=""></i></a></div><a id="itemlink-5710-0"
- class="itemlink" href="http://www.espnfc.com/copa-america/83/blog/post/2508492/eduardo-vargas-is-lighting-up-copa-america-for-chile" 
- <span><div class="headlinewrapper"><p id="headline-5710-0"
- class="headline"><?php print_r($output);  ?></p>
- </div><p id="date-5710-0" 
- class="date">15 mins ago</p>
- 
-
- 
- 
- <?php
-$sql = "SELECT number,link,username,topic FROM link";
-	$query = mysqli_query($dbCon, $sql);
-	$row = mysqli_fetch_row($query);
-	$uid = $row[0];
-	$dblink = $row[1];
-	$dbusername = $row[2];
-	$dbtopic = $row[3];
-    $ch = curl_init($dblink);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36');
-
-    $res = curl_exec($ch);
-
-    if ($res === false) {
-        die('error: ' . curl_error($ch));
-    }
-
-    curl_close($ch);
-
-    $d = new DOMDocument();
-    @$d->loadHTML($res);
-
-    $output = array(
-        'title' => '',
-    );
-
-    $x = new DOMXPath($d);
-
-    $title = $x->query("//title");
-    if ($title->length > 0) {
-        $output['title'] = $title->item(0)->textContent;
-    }
-?>
-
- 
-  <div id="content" name="content" tabindex="1" class="notranslate blur" style="right: 10px;"></br>
-<li style="display: inline;" class="keynav withoutfocus">
-<div class="press">
-<div id="titlebar-5710-0" class="titlebar">
-<img src="https://duh8wcwur1xop.cloudfront.net/images/favicon_overlay.png" alt="" align="absmiddle" id="favicon-5710-0" 
-class="favicon" 
-style="background-image: url(http://espn.go.com/favicon.ico);" data-url="http://espn.go.com/favicon.ico">
-<div class="sourcewrapper">
-<p id="source-5710-0" class="source" title="Copyright 2015 ESPN Inc.">ESPN.com - Tennis</p></div>
- <class="fa fa-globe icon activityimg" data-original-title=""
- title=""></i></a></div><a id="itemlink-5710-0"
- class="itemlink" href="http://www.espnfc.com/copa-america/83/blog/post/2508492/eduardo-vargas-is-lighting-up-copa-america-for-chile" 
- <span><div class="headlinewrapper"><p id="headline-5710-0"
- class="headline"><?php print_r($output);  ?></p>
- </div><p id="date-5710-0" 
- class="date">15 mins ago</p>
- 
-
  </body>
 
 
 
  
 </html>
+<?php
+error_reporting(0);
+ini_set('display_errors', 0);
+
+
+$sql="SELECT COUNT(DISTINCT number) from  links";
+	$query = mysqli_query($dbCon, $sql);
+	$n=$sql;
+	$i=0;
+	while($i<=$n){
+	$i++;
+	$sql = "SELECT number,link,username,topic FROM links WHERE number='$i'";
+	$query = mysqli_query($dbCon, $sql);
+	$row = mysqli_fetch_row($query);
+	$uid = $row[0];
+	$dblink = $row[1];
+	$dbusername = $row[2];
+	$dbtopic = $row[3];
+	$n=$uid;
+	
+    $ch = curl_init($dblink);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36');
+    $res = curl_exec($ch);
+    if ($res === false) {
+        die('error: ' . curl_error($ch));
+    }
+    curl_close($ch);
+    $d = new DOMDocument();
+    @$d->loadHTML($res);
+    $output = array(
+      '',
+    );
+    $x = new DOMXPath($d);
+    $title = $x->query("//title");
+    if ($title->length > 0) {
+        $output['title'] = $title->item(0)->textContent;
+    }
+	
+	
+$form = <<<EOT
+		<html>
+		<body>
+	<div id="content" name="content" tabindex="1" class="notranslate blur" style="right: 10px;"></br>
+<li style="display: inline;" class="keynav withoutfocus">
+<div class="press">
+<div id="titlebar-5710-0" class="titlebar">
+<img src="https://duh8wcwur1xop.cloudfront.net/images/favicon_overlay.png" alt="" align="absmiddle" id="favicon-5710-0" 
+class="favicon" 
+style="background-image: url(http://espn.go.com/favicon.ico);" data-url="http://espn.go.com/favicon.ico">
+<div class="sourcewrapper">
+<p id="source-5710-0" class="source" title="Copyright 2015 ESPN Inc.">ESPN.com - Tennis</p></div>
+ <class="fa fa-globe icon activityimg" data-original-title=""
+ title=""></i></a></div><a id="itemlink-5710-0"
+ class="itemlink" href="<?php $dblink ?>" 
+ <span><div class="headlinewrapper"><p id="headline-5710-0"
+ </div><p id="date-5710-0" 
+ class="date">15 mins ago</p>
+ </body>
+ </html>
+EOT;
+	echo $form;
+	print_r($output);
+	}
+?>
+
+
+
+
+
+ 
