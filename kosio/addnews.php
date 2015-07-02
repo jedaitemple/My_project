@@ -82,8 +82,32 @@ if(isset($_POST['submit'])){
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-			
-			$sql = "INSERT INTO links (number, link, username,topic) VALUES (0, '$link1', '$usname','$topic')";
+			$dblink=$link1;
+			 $ch = curl_init($dblink);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36');
+    $res = curl_exec($ch);
+    if ($res === false) {
+        die('error: ' . curl_error($ch));
+    }
+    curl_close($ch);
+    $d = new DOMDocument();
+    @$d->loadHTML($res);
+    $output = array(
+      '',
+    );
+    $x = new DOMXPath($d);
+    $title = $x->query("//title");
+    if ($title->length > 0) {
+        $output['title'] = $title->item(0)->textContent;
+    }
+	$str = implode(',', $output);
+	echo $str;
+	$sql = "INSERT INTO link (number, link, username,topic) VALUES (0, '$str', '$usname','$topic')";
+	print_r($output);
+	
+	
 if(mysqli_query($link, $sql)){
     echo "Records added successfully.";
 } else{

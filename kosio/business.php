@@ -84,10 +84,10 @@ body {
 	<li><a href='addnews.php'>Add new News</a></li>
 
    <li><a href='user.php'>All news</a></li>
-   <li class='#'><a href='#'>Business and finace</a>
-      <li class='sport.php'><a href='sport.php'>Sports</a>
-   <li><a href='#'>Culture and entertainment</a></li>
-   <li><a href='#'>Science and Technology</a></li>
+   <li class='#'><a href='business.php'>Business and finace</a>
+      <li class='sport.php'><a href='#'>Sports</a>
+   <li><a href='culture.php'>Culture and entertainment</a></li>
+   <li><a href='science.php'>Science and Technology</a></li>
      <li><a href='#'> Travel</a></li>
 	   <li><a href='#'>Health</a></li>
 		  <li><a href='#'>Lifestyle and fashion</a></li>
@@ -107,13 +107,13 @@ body {
 <?php
 error_reporting(0);
 ini_set('display_errors', 0);
-$sql="SELECT COUNT(DISTINCT number) from  links";
+$sql="SELECT COUNT(DISTINCT number) from  link";
 	$query = mysqli_query($dbCon, $sql);
 	$n=$sql;
 	$i=0;
 	while($i<=$n){
 	$i++;
-	$sql = "SELECT number,link,username,topic FROM links WHERE number='$i'";
+	$sql = "SELECT number,link,username,topic FROM link WHERE number='$i'";
 	$query = mysqli_query($dbCon, $sql);
 	$row = mysqli_fetch_row($query);
 	$uid = $row[0];
@@ -122,25 +122,7 @@ $sql="SELECT COUNT(DISTINCT number) from  links";
 	$dbtopic = $row[3];
 	$n=$uid;
 	
-    $ch = curl_init($dblink);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36');
-    $res = curl_exec($ch);
-    if ($res === false) {
-        die('error: ' . curl_error($ch));
-    }
-    curl_close($ch);
-    $d = new DOMDocument();
-    @$d->loadHTML($res);
-    $output = array(
-      '',
-    );
-    $x = new DOMXPath($d);
-    $title = $x->query("//title");
-    if ($title->length > 0) {
-        $output['title'] = $title->item(0)->textContent;
-    }
+   
 	if($dbtopic=='business'){
 	
 $form = <<<EOT
@@ -165,7 +147,7 @@ style="background-image: url(http://espn.go.com/favicon.ico);" data-url="http://
 EOT;
 	
 	echo $form;
-	print_r($output);
+	print_r($dblink);
 	}
 	}
 	

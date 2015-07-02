@@ -85,7 +85,7 @@ body {
 
    <li><a href='user.php'>All news</a></li>
    <li class='#'><a href='business.php'>Business and finace</a>
-      <li class='#'><a href='sport.php'>Sports</a>
+      <li class='sport.php'><a href='sport.php'>Sports</a>
    <li><a href='culture.php'>Culture and entertainment</a></li>
    <li><a href='science.php'>Science and Technology</a></li>
      <li><a href='#'> Travel</a></li>
@@ -122,6 +122,9 @@ $sql="SELECT COUNT(DISTINCT number) from  link";
 	$dbtopic = $row[3];
 	$n=$uid;
 	
+   
+	if($dbtopic=='culture'){
+	
 $form = <<<EOT
 		<html>
 		<body>
@@ -146,6 +149,6 @@ EOT;
 	echo $form;
 	print_r($dblink);
 	}
-	
+	}
 	
 ?>
