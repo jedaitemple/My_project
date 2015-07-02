@@ -73,31 +73,100 @@ body {
      </div>
  </div>
  <center>
-	<h1>This is a Kosio's website so choose the type you want to check</h1> 
+  <h1>All News</h1>
  </center>
-<h2>Here in this site you can add a news about everything and share them in social sites</h2>
- <h2>start now by choosing the type of news you want</h2>
  
- <div class="container">
-        <div class="row">
-            <div class="twelve columns" id="imenu">
-            <div id="nav" class="nine columns">
-                                   
-     <ul id="nav_menu">
-          <li><a href='#'>Politics and world</a></li>
-   <li class='business.php'><a href='business.php'>Business and finace</a>
-      <li class='sport.php'><a href='sport.php'>Sports</a>
+ <br><div id='cssmenu'></br>
+<ul>
+
+
+
+	<li><a href='addnews.php'>Add new News</a></li>
+
+   <li><a href='user.php'>All news</a></li>
+   <li class='#'><a href='business.php'>Business and finace</a>
+      <li class='sport.php'><a href='#'>Sports</a>
    <li><a href='#'>Culture and entertainment</a></li>
    <li><a href='#'>Science and Technology</a></li>
      <li><a href='#'> Travel</a></li>
 	   <li><a href='#'>Health</a></li>
 		  <li><a href='#'>Lifestyle and fashion</a></li>
 		 <li><a href='#'>Environment</a></li>
-		<li><a href='#'>Satire</a></li>
+		  <li><a href='#'>Satire</a></li>
 		  <li><a href='#'>Comics</a></li>
-    </ul>               </div>
- 
- 
+		  
+	   </ul>
+</div>
 
  </body>
+
+
+
+ 
+</html>
+<?php
+error_reporting(0);
+ini_set('display_errors', 0);
+$sql="SELECT COUNT(DISTINCT number) from  links";
+	$query = mysqli_query($dbCon, $sql);
+	$n=$sql;
+	$i=0;
+	while($i<=$n){
+	$i++;
+	$sql = "SELECT number,link,username,topic FROM links WHERE number='$i'";
+	$query = mysqli_query($dbCon, $sql);
+	$row = mysqli_fetch_row($query);
+	$uid = $row[0];
+	$dblink = $row[1];
+	$dbusername = $row[2];
+	$dbtopic = $row[3];
+	$n=$uid;
+	
+    $ch = curl_init($dblink);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36');
+    $res = curl_exec($ch);
+    if ($res === false) {
+        die('error: ' . curl_error($ch));
+    }
+    curl_close($ch);
+    $d = new DOMDocument();
+    @$d->loadHTML($res);
+    $output = array(
+      '',
+    );
+    $x = new DOMXPath($d);
+    $title = $x->query("//title");
+    if ($title->length > 0) {
+        $output['title'] = $title->item(0)->textContent;
+    }
+	if($dbtopic=='sport'){
+	
+$form = <<<EOT
+		<html>
+		<body>
+	<div id="content" name="content" tabindex="1" class="notranslate blur" style="right: 10px;"></br>
+<li style="display: inline;" class="keynav withoutfocus">
+<div class="press">
+<div id="titlebar-5710-0" class="titlebar">
+<img src="https://duh8wcwur1xop.cloudfront.net/images/favicon_overlay.png" alt="" align="absmiddle" id="favicon-5710-0" 
+class="favicon" 
+style="background-image: url(http://espn.go.com/favicon.ico);" data-url="http://espn.go.com/favicon.ico">
+<div class="sourcewrapper">
+<p id="source-5710-0" class="source" title="Copyright 2015 ESPN Inc.">ESPN.com - Tennis</p></div>
+ <class="fa fa-globe icon activityimg" data-original-title=""
+ title=""></i></a></div><a> 
+ <span><div class="headlinewrapper"><p id="headline-5710-0"
+ </div><p id="date-5710-0" 
+ class="date">15 mins ago</p>
+ </body>
  </html>
+EOT;
+	
+	echo $form;
+	print_r($output);
+	}
+	}
+	
+?>
