@@ -6,7 +6,6 @@ OK Now its not hardcode and a lot things fails:
 search button fails
 i should search for a fix for the link 
 #add email validation
-#add a post in the news
 
 #add share 
 #The Owner is Konstantin Kostov
