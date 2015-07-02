@@ -122,6 +122,7 @@ $sql="SELECT COUNT(DISTINCT number) from  link";
 	$dbusername = $row[2];
 	$dbtopic = $row[3];
 	$n=$uid;
+	if($dbusername==$usname);
 $form = <<<EOT
 		<html>
 		<body>

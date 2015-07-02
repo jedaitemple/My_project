@@ -56,7 +56,7 @@ body {
 		
 
          <li><a href="#">About</a></li>
-         <li><a href="#">Show History</a></li>
+        <li><a href="mynews.php">Show History</a></li>
 		  <li><a href="user.php">All news</a></li>
 		    <li><a href="#"><?php echo $result;?></a></li>
     </ul>               </div>

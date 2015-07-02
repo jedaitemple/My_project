@@ -56,7 +56,7 @@ body {
 		
 
          <li><a href="#">About</a></li>
-         <li><a href="#">Show History</a></li>
+         <li><a href="mystyles.php">Show History</a></li>
 		    <li><a href="#"><?php echo $result;?></a></li>
     </ul>               </div>
 
@@ -73,19 +73,19 @@ body {
      </div>
  </div>
  <center>
+  
   <h1>All News</h1>
- </center>
- 
- <br><div id='cssmenu'></br>
-<ul>
-
-
-
-	<li><a href='addnews.php'>Add new News</a></li>
+  <div class="container">
+        <div class="row">
+            <div class="twelve columns" id="imenu">
+            <div id="nav" class="nine columns">
+                           
+     <ul id="nav_menu">
+       	<li><a href='addnews.php'>Add new News</a></li>
 
    <li><a href='user.php'>All news</a></li>
    <li class='#'><a href='business.php'>Business and finace</a>
-      <li class='sport.php'><a href='#'>Sports</a>
+      <li class='sport.php'><a href='sport.php'>Sports</a>
    <li><a href='culture.php'>Culture and entertainment</a></li>
    <li><a href='science.php'>Science and Technology</a></li>
      <li><a href='travel.php'> Travel</a></li>
@@ -94,8 +94,9 @@ body {
 		 <li><a href='#'>Environment</a></li>
 		  <li><a href='#'>Satire</a></li>
 		  <li><a href='comics.php'>Comics</a></li>
-		  
-	   </ul>
+  
+ </center>
+ 
 </div>
 
  </body>
@@ -121,33 +122,22 @@ $sql="SELECT COUNT(DISTINCT number) from  link";
 	$dbusername = $row[2];
 	$dbtopic = $row[3];
 	$n=$uid;
-	
-   
 	if($dbtopic=='travel'){
-	
 $form = <<<EOT
 		<html>
 		<body>
-	<div id="content" name="content" tabindex="1" class="notranslate blur" style="right: 10px;"></br>
-<li style="display: inline;" class="keynav withoutfocus">
+<div class="feeditem item-i3 item-5064-3" id="aid-236281278" timestamp="1435855458">
 <div class="press">
-<div id="titlebar-5710-0" class="titlebar">
-<img src="https://duh8wcwur1xop.cloudfront.net/images/favicon_overlay.png" alt="" align="absmiddle" id="favicon-5710-0" 
-class="favicon" 
-style="background-image: url(http://espn.go.com/favicon.ico);" data-url="http://espn.go.com/favicon.ico">
-<div class="sourcewrapper">
-<p id="source-5710-0" class="source" title="Copyright 2015 ESPN Inc.">ESPN.com - Tennis</p></div>
- <class="fa fa-globe icon activityimg" data-original-title=""
- title=""></i></a></div><a> 
- <span><div class="headlinewrapper"><p id="headline-5710-0"
- </div><p id="date-5710-0" 
- class="date">15 mins ago</p>
+<div id="titlebar-5064-3" class="titlebar"> 
+ <i id="activityimg-5064-3" class="fa fa-globe icon activityimg" data-original-title="" title=""></i></a></div>
+ <a id="itemlink-5064-3" class="itemlink" href="http://espn.go.com/nfl/story/_/id/13187628/duke-ihenacho-washington-redskins-rants-inequity-nba-nfl-deals" target="_blank" hasmore="0" feedurl="http://espn.go.com" feedid="103683" aid="236281278" cleanhref="http://espn.go.com/nfl/story/_/id/13187628/duke-ihenacho-washington-redskins-rants-inequity-nba-nfl-deals" cleanuri="13187628">
+ <span><div class="headlinewrapper"><p id="headline-5064-3" class="headline">$dblink</p></div><p id="date-5064-3" class="date">48 mins ago</p><div class="textwrapper">
+ <p id="text-5064-3" class="text"></p></div></span></a></div></div>
  </body>
  </html>
 EOT;
 	
 	echo $form;
-	print_r($dblink);
 	}
 	}
 	

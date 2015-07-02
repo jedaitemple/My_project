@@ -7,7 +7,7 @@ if(isset($_POST['submit'])){
 		$pass2 = $_POST['pass2'];
 		
 		if($pass1 == $pass2){
-			//all good
+			//all good 
 			$email = mysql_real_escape_string($_POST['email']);
 			$username = mysql_real_escape_string($_POST['username']);
 			$pass1 = mysql_real_escape_string($pass1);
