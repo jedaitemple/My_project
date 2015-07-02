@@ -95,7 +95,6 @@ body {
 		  <li><a href='#'>Satire</a></li>
 		  <li><a href='comics.php'>Comics</a></li>
 		  
-	  
 	   </ul>
 </div>
 
@@ -123,6 +122,9 @@ $sql="SELECT COUNT(DISTINCT number) from  link";
 	$dbtopic = $row[3];
 	$n=$uid;
 	
+   
+	if($dbtopic=='lifestyle'){
+	
 $form = <<<EOT
 		<html>
 		<body>
@@ -147,6 +149,6 @@ EOT;
 	echo $form;
 	print_r($dblink);
 	}
-	
+	}
 	
 ?>

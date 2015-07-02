@@ -85,16 +85,17 @@ body {
 
    <li><a href='user.php'>All news</a></li>
    <li class='#'><a href='business.php'>Business and finace</a>
-      <li class='sport.php'><a href='sport.php'>Sports</a>
+      <li class='sport.php'><a href='#'>Sports</a>
    <li><a href='culture.php'>Culture and entertainment</a></li>
    <li><a href='science.php'>Science and Technology</a></li>
-     <li><a href='#'> Travel</a></li>
-	   <li><a href='#'>Health</a></li>
-		  <li><a href='#'>Lifestyle and fashion</a></li>
+     <li><a href='travel.php'> Travel</a></li>
+	   <li><a href='health.php'>Health</a></li>
+		  <li><a href='lifestyle.php'>Lifestyle and fashion</a></li>
 		 <li><a href='#'>Environment</a></li>
 		  <li><a href='#'>Satire</a></li>
-		  <li><a href='#'>Comics</a></li>
+		  <li><a href='comics.php'>Comics</a></li>
 		  
+	   </ul>
 	   </ul>
 </div>
 
