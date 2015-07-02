@@ -75,6 +75,7 @@ if(isset($_POST['submit'])){
 		
 		$link1 = $_POST['link'];
 		$link1 = mysql_real_escape_string($_POST['link']);
+		$topic = mysql_real_escape_string($_POST['topic']);
 		$link = mysqli_connect("localhost", "root", "", "kosio");
  
 // Check connection
@@ -82,7 +83,7 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 			
-			$sql = "INSERT INTO links (number, link, username,topic) VALUES (0, '$link1', '$usname','sport')";
+			$sql = "INSERT INTO links (number, link, username,topic) VALUES (0, '$link1', '$usname','$topic')";
 if(mysqli_query($link, $sql)){
     echo "Records added successfully.";
 } else{
@@ -92,6 +93,7 @@ if(mysqli_query($link, $sql)){
 	
 $form = <<<EOT
 <html>
+
 		<head>
 			<title>BESTNEWS - Registration</title>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -115,6 +117,7 @@ body {
 		<div id="form">
 			<form align = "center" action = "addnews.php" method = "POST">
 				<input placeholder = "link" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;" type = "text" name = "link" required/><br>
+				<input placeholder = "topic" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;" type = "text" name = "topic" required/><br>
 				<input class = "button" type = "submit" value = "ADD the news" name = "submit" />
 			</form>	
 		</div>

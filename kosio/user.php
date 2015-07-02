@@ -26,7 +26,6 @@ if (isset($_SESSION['id'])) {
 body {
     background:  #ffffff url("images/green.jpg") no-repeat;
 }
-
 </style>
 
 
@@ -81,9 +80,9 @@ body {
 <ul>
 
 
+
 	<li><a href='addnews.php'>Add new News</a></li>
-	   <li><a href='#'>topnews in Bulgaria</a></li>
-	   <li><a href='#'>Topn news around the world</a></li>
+
    <li><a href='#'>Politics and world</a></li>
    <li class='#'><a href='#'>Business and finace</a>
       <li class='#'><a href='#'>Sports</a>
@@ -108,8 +107,6 @@ body {
 <?php
 error_reporting(0);
 ini_set('display_errors', 0);
-
-
 $sql="SELECT COUNT(DISTINCT number) from  links";
 	$query = mysqli_query($dbCon, $sql);
 	$n=$sql;
@@ -159,8 +156,7 @@ style="background-image: url(http://espn.go.com/favicon.ico);" data-url="http://
 <div class="sourcewrapper">
 <p id="source-5710-0" class="source" title="Copyright 2015 ESPN Inc.">ESPN.com - Tennis</p></div>
  <class="fa fa-globe icon activityimg" data-original-title=""
- title=""></i></a></div><a id="itemlink-5710-0"
- class="itemlink" href="<?php $dblink ?>" 
+ title=""></i></a></div><a> 
  <span><div class="headlinewrapper"><p id="headline-5710-0"
  </div><p id="date-5710-0" 
  class="date">15 mins ago</p>
@@ -171,9 +167,3 @@ EOT;
 	print_r($output);
 	}
 ?>
-
-
-
-
-
- 

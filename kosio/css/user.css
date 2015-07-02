@@ -1,7 +1,7 @@
 .press {
 	float: left;
 	display: inline;
-	width: 44%;
+	width: 17%;
 	height: 170px;
 	overflow: hidden;
 	font-family: 'Corbel', 'Calibri', 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Arial', 'Lucida Sans', 'Myriad', 'Verdana', sans-serif;
@@ -137,4 +137,3 @@ margin: 0;
 	-moz-outline-style: none;
 	outline: none;
 }
-
