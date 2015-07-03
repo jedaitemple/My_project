@@ -94,7 +94,13 @@ if($link === false){
     curl_close($ch);
     $d = new DOMDocument();
     @$d->loadHTML($res);
+	 $d->preserveWhiteSpace = false;
+
+
     $output = array(
+      '',
+    );
+	 $output1 = array(
       '',
     );
     $x = new DOMXPath($d);
@@ -102,9 +108,14 @@ if($link === false){
     if ($title->length > 0) {
         $output['title'] = $title->item(0)->textContent;
     }
+
+	
+	
+	
+	
 	$str = implode(',', $output);
 	echo $str;
-	$sql = "INSERT INTO link (number, link, username,topic) VALUES (0, '$str', '$usname','$topic')";
+	$sql = "INSERT INTO links (number, link, username,topic,links) VALUES (0, '$str', '$usname','$topic','$link1')";
 	print_r($output);
 	
 	

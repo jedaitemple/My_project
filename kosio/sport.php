@@ -56,8 +56,9 @@ body {
 		
 
          <li><a href="#">About</a></li>
-         <li><a href="mystyles.php">Show History</a></li>
+          <li><a href="mynews.php">My news</a></li>
 		    <li><a href="#"><?php echo $result;?></a></li>
+			<li><a href="index.php">Logout</a></li>
     </ul>               </div>
 
 		<div class="three columns">
@@ -108,19 +109,20 @@ body {
 <?php
 error_reporting(0);
 ini_set('display_errors', 0);
-$sql="SELECT COUNT(DISTINCT number) from  link";
+$sql="SELECT COUNT(DISTINCT number) from  links";
 	$query = mysqli_query($dbCon, $sql);
 	$n=$sql;
 	$i=0;
 	while($i<=$n){
 	$i++;
-	$sql = "SELECT number,link,username,topic FROM link WHERE number='$i'";
+	$sql = "SELECT number,link,username,topic,links FROM links WHERE number='$i'";
 	$query = mysqli_query($dbCon, $sql);
 	$row = mysqli_fetch_row($query);
 	$uid = $row[0];
 	$dblink = $row[1];
 	$dbusername = $row[2];
 	$dbtopic = $row[3];
+	$dblinks = $row[4];
 	$n=$uid;
 	if($dbtopic=='sport'){
 $form = <<<EOT
@@ -129,8 +131,13 @@ $form = <<<EOT
 <div class="feeditem item-i3 item-5064-3" id="aid-236281278" timestamp="1435855458">
 <div class="press">
 <div id="titlebar-5064-3" class="titlebar"> 
+		<a href="#" onclick="www.google.bg"><img src="images/button_google.png" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
+			 <a href="#" onclick="www.google.bg"><img src="images/facebook.jpg"  style="margin: 3px 4px 0 0; width: 24x; height: 24px;"></a>
+			 <a href="#" onclick="www.google.bg"><img src="images/t.png"  style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
+			<a href="#" onclick="www.google.bg"><img src="images/link.png"  style="margin: 3px 4px 0 0; width: 24x; height: 24px;"></a>
+
  <i id="activityimg-5064-3" class="fa fa-globe icon activityimg" data-original-title="" title=""></i></a></div>
- <a id="itemlink-5064-3" class="itemlink" href="http://espn.go.com/nfl/story/_/id/13187628/duke-ihenacho-washington-redskins-rants-inequity-nba-nfl-deals" target="_blank" hasmore="0" feedurl="http://espn.go.com" feedid="103683" aid="236281278" cleanhref="http://espn.go.com/nfl/story/_/id/13187628/duke-ihenacho-washington-redskins-rants-inequity-nba-nfl-deals" cleanuri="13187628">
+ <a id="itemlink-5064-3" class="itemlink" href="$dblinks" target="_blank" hasmore="0" feedurl="http://espn.go.com" feedid="103683" aid="236281278" cleanhref="http://espn.go.com/nfl/story/_/id/13187628/duke-ihenacho-washington-redskins-rants-inequity-nba-nfl-deals" cleanuri="13187628">
  <span><div class="headlinewrapper"><p id="headline-5064-3" class="headline">$dblink</p></div><p id="date-5064-3" class="date">48 mins ago</p><div class="textwrapper">
  <p id="text-5064-3" class="text"></p></div></span></a></div></div>
  </body>
