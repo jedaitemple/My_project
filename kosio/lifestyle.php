@@ -75,7 +75,8 @@ body {
  </div>
  <center>
   
-  <h1>All News</h1>
+ <p style="font-family: 'Arvo', 'Corbel', 'Calibri', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Myriad', 'Verdana', sans-serif; font-size: 28px; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3); line-height: 28px;">Lifestyle <span class="e3o0356g51" id="e3o0356g51_7" style="height: 28px;">news</span></p><br>
+  
   <div class="container">
         <div class="row">
             <div class="twelve columns" id="imenu">
