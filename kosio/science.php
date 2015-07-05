@@ -20,11 +20,10 @@ if (isset($_SESSION['id'])) {
 <title><?php echo $usname ;?> - Best news</title>
 <link rel="stylesheet" type="text/css" href="css/menu.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/kosio.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/user.css" media="screen" />
 <style type="text/css">
 body {
-    background:  #ffffff url("images/green.jpg") no-repeat;
+   background:  #ffffff url("images/green.jpg") repeat-y;
 }
 </style>
 
@@ -111,13 +110,14 @@ body {
 <?php
 error_reporting(0);
 ini_set('display_errors', 0);
-$sql="SELECT COUNT(DISTINCT number) from  links";
+$sql = "SELECT number,link,username,topic,links,image,date FROM links ORDER by number DESC";
 	$query = mysqli_query($dbCon, $sql);
-	$n=$sql;
-	$i=0;
-	while($i<=$n){
-	$i++;
+	$row = mysqli_fetch_row($query);
+	$uid = $row[0];
+	$i=$uid;
+	while($i>=0){
 	$sql = "SELECT number,link,username,topic,links,image,date FROM links WHERE number='$i'";
+	$i--;
 	$query = mysqli_query($dbCon, $sql);
 	$row = mysqli_fetch_row($query);
 	$uid = $row[0];
@@ -125,8 +125,8 @@ $sql="SELECT COUNT(DISTINCT number) from  links";
 	$dbusername = $row[2];
 	$dbtopic = $row[3];
 	$dblinks = $row[4];
-	$dbimage =$row[5];
-	$dbdate =$row[6];
+	$dbimage = $row[5];
+	$dbdate = $row[6];
 	$n=$uid;
 	if($dbtopic=='science'){
 $form = <<<EOT

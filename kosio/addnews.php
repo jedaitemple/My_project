@@ -122,9 +122,11 @@ if($link === false){
         $output['title'] = $title->item(0)->textContent;
     }
 	
-	$date = date("F j, Y, g:i a"); 
-	
-	
+$tz = 'Europe/Sofia';
+$timestamp = time();
+$dt = new DateTime("now", new DateTimeZone($tz)); 
+$dt->setTimestamp($timestamp); 
+$date=$dt->format('d.m.Y, H:i:s');
 	$str = implode(',', $output);
 	echo $str;
 	$sql = "INSERT INTO links (number, link, username,topic,links,image,date) VALUES (0, '$str', '$usname','$topic','$link1','$image','$date')";
