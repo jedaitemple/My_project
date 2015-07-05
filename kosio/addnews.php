@@ -76,12 +76,21 @@ if(isset($_POST['submit'])){
 		$link1 = $_POST['link'];
 		$link1 = mysql_real_escape_string($_POST['link']);
 		$topic = mysql_real_escape_string($_POST['topic']);
+		$image = mysql_real_escape_string($_POST['image']);
 		$link = mysqli_connect("localhost", "root", "", "kosio");
+		
+		
+		
+		
  
 // Check connection
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
+
+
+
+
 			$dblink=$link1;
 			 $ch = curl_init($dblink);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -108,14 +117,13 @@ if($link === false){
     if ($title->length > 0) {
         $output['title'] = $title->item(0)->textContent;
     }
-
 	
 	
 	
 	
 	$str = implode(',', $output);
 	echo $str;
-	$sql = "INSERT INTO links (number, link, username,topic,links) VALUES (0, '$str', '$usname','$topic','$link1')";
+	$sql = "INSERT INTO links (number, link, username,topic,links,image) VALUES (0, '$str', '$usname','$topic','$link1','$image')";
 	print_r($output);
 	
 	
@@ -153,6 +161,7 @@ body {
 			<form align = "center" action = "addnews.php" method = "POST">
 				<input placeholder = "link" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;" type = "text" name = "link" required/><br>
 				<input placeholder = "topic" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;" type = "text" name = "topic" required/><br>
+				<input placeholder = "image" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;" type = "text" name = "image" required/><br>
 				<input class = "button" type = "submit" value = "ADD the news" name = "submit" />
 			</form>	
 		</div>

@@ -58,7 +58,6 @@ body {
               
             
          </li>
-		
 
          <li><a href="#">About</a></li>
          <li><a href="mynews.php">My news</a></li>
@@ -81,7 +80,6 @@ body {
      </div>
  </div>
  <center>
-  
   <h1>All News</h1>
   <div class="container">
         <div class="row">
@@ -122,7 +120,7 @@ $sql="SELECT COUNT(DISTINCT number) from  link";
 	$i=0;
 	while($i<=$n){
 	$i++;
-	$sql = "SELECT number,link,username,topic,links FROM links WHERE number='$i'";
+	$sql = "SELECT number,link,username,topic,links,image FROM links WHERE number='$i'";
 	$query = mysqli_query($dbCon, $sql);
 	$row = mysqli_fetch_row($query);
 	$uid = $row[0];
@@ -130,6 +128,8 @@ $sql="SELECT COUNT(DISTINCT number) from  link";
 	$dbusername = $row[2];
 	$dbtopic = $row[3];
 	$dblinks = $row[4];
+	$dbimage = $row[5];
+	
 	$n=$uid;
 $form = <<<EOT
 		<html>
@@ -142,6 +142,7 @@ $form = <<<EOT
 			 <a href="#" onclick="www.google.bg"><img src="images/t.png"  style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
 			<a href="#" onclick="www.google.bg"><img src="images/link.png"  style="margin: 3px 4px 0 0; width: 24x; height: 24px;"></a>
 
+<img class="scaledImageFitWidth img" src='$dbimage' alt="" width="170" height="76">
  <i id="activityimg-5064-3" class="fa fa-globe icon activityimg" data-original-title="" title=""></i></a></div>
  <a id="itemlink-5064-3" class="itemlink" href="$dblinks" target="_blank" hasmore="0" feedurl="http://espn.go.com" feedid="103683" aid="236281278" cleanhref="http://espn.go.com/nfl/story/_/id/13187628/duke-ihenacho-washington-redskins-rants-inequity-nba-nfl-deals" cleanuri="13187628">
  <span><div class="headlinewrapper"><p id="headline-5064-3" class="headline">$dblink</p></div><p id="date-5064-3" class="date">48 mins ago</p><div class="textwrapper">
@@ -153,5 +154,5 @@ EOT;
 	echo $form;
 	}
 	
-	
+		
 ?>
