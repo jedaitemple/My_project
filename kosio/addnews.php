@@ -72,14 +72,18 @@ body {
  </html>
 <?php
 if(isset($_POST['submit'])){
+$selected_val = $_POST['topic']; 
+echo "You have selected :" .$selected_val; 
+
+
 		
 		$link1 = $_POST['link'];
 		$link1 = mysql_real_escape_string($_POST['link']);
-		$topic = mysql_real_escape_string($_POST['topic']);
+	
 		$image = mysql_real_escape_string($_POST['image']);
 		$link = mysqli_connect("localhost", "root", "", "kosio");
 		
-		
+		$topic=$selected_val;
 		
 		
  
@@ -159,8 +163,21 @@ body {
 	
 		<div id="form">
 			<form align = "center" action = "addnews.php" method = "POST">
+				<h2>select link of publication</h2>
 				<input placeholder = "link" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;" type = "text" name = "link" required/><br>
-				<input placeholder = "topic" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;" type = "text" name = "topic" required/><br>
+				<h2>select type of the news</h2>
+				<select name="topic" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;">
+<option     value="business">business</option>
+<option value="sport">sport</option>
+<option value="culture">culture</option>
+<option value="science">science</option>
+<option value="lifestyle">lifestyle</option>
+<option value="health">health</option>
+<option value="travel">travel</option>
+<option value="comics">comics</option>
+
+</select>
+				<h2>select link of the image</h2>
 				<input placeholder = "image" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;" type = "text" name = "image" required/><br>
 				<input class = "button" type = "submit" value = "ADD the news" name = "submit" />
 			</form>	
