@@ -2,7 +2,7 @@
 # My_project
 This is web app with which you can share news in social sites.
 # Future plans
-I fixed it and I can go throgh
+Ok I added image also and I will put a video on how to use my api for all users
 #add email validation
 
 #add share 
