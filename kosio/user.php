@@ -11,30 +11,28 @@ if (isset($_SESSION['id'])) {
 }
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script>
-function goBack() {
+function goBac k() {
     window.history.go(-2);
 }
 </script>">
 
 <title><?php echo $usname ;?> - Best news</title>
 <link rel="stylesheet" type="text/css" href="css/menu.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="css/kosio.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/user.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/kosio.css" media="screen" />
 <style type="text/css">
 body {
-    background:  #ffffff url("images/green.jpg") repeat-y;
+background:  #ffffff url("images/green.jpg") repeat-y;
 }
 </style>
-
-
+ 
 </head>
+
 
 <body>
 <div class="container">
@@ -42,7 +40,7 @@ body {
             <div class="twelve columns" id="imenu">
             <div id="nav" class="nine columns">
              <div id="home"><a href="#"><img src="images/tivenews.gif" alt="home"></a></div>                           
-     <ul id="nav_menu">
+     <ul id="nav_menu"> 
 <li><A HREF="goBack()">refresh</A></li>
       
          <li><a href="#">Sort By</a>
@@ -57,7 +55,7 @@ body {
               
             
          </li>
-
+		
          <li><a href="#">About</a></li>
          <li><a href="mynews.php">My news</a></li>
 		 
@@ -66,16 +64,6 @@ body {
 
     </ul>               </div>
 
-		<div class="three columns">
-
- <form method="get" class="searchform">
-     <div id="magnify"><img src="images/m.png" alt="magnify"></div>
-     <div><input name="s" class="s" value="Search" id="searchsubmit" onfocus="if (this.value == 'Search') this.value = '';" type="text"></div>
-     <div><input class="searchsubmit" value="" type="submit"></div>
- </form>          
-
- </div>
-                     </div>
      </div>
  </div>
  <center>
@@ -103,6 +91,14 @@ body {
  </center>
  
 </div>  
+<center>
+<form class="form-wrapper cf">
+        <input type="text" placeholder="Search here..." required>
+        <button type="submit">Search</button>
+    </form>  
+</center>
+
+
  </body>
 
 
