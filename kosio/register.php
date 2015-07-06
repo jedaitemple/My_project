@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
 			$username = mysql_real_escape_string($_POST['username']);
 			$pass1 = mysql_real_escape_string($pass1);
 			$pass2 = mysql_real_escape_string($pass2);
-			$link = mysqli_connect("localhost", "root", "", "kosio");
+		$link = mysqli_connect("localhost", "root", "", "kosio");
  
 // Check connection
 if($link === false){

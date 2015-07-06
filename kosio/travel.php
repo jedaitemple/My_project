@@ -130,12 +130,48 @@ $sql = "SELECT number,link,username,topic,links,image,date FROM links ORDER by n
 	if($dbtopic=='travel'){
 $form = <<<EOT
 		<html>
+		<head>
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('#share_button').click(function(e){
+e.preventDefault();
+FB.ui(
+{
+method: 'feed',
+name: 'This is the content of the "name" field.',
+link: ' http://www.hyperarts.com/',
+picture: 'http://www.hyperarts.com/external-xfbml/share-image.gif',
+caption: 'Great job'
+});
+});
+});
+</script>
+ <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '721882704604585',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+</head>
+		
 		<body>
 <div class="feeditem item-i3 item-5064-3" id="aid-236281278" timestamp="1435855458">
 <div class="press">
 <div id="titlebar-5064-3" class="titlebar"> 
 		<a href="#" onclick="www.google.bg"><img src="images/button_google.png" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
-			 <a href="#" onclick="www.google.bg"><img src="images/facebook.jpg"  style="margin: 3px 4px 0 0; width: 24x; height: 24px;"></a>
+			<a href="#" onclick="share_me()"><img id = "share_button" src = "images/facebook.jpg" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
 			 <a href="#" onclick="www.google.bg"><img src="images/t.png"  style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
 			<a href="#" onclick="www.google.bg"><img src="images/link.png"  style="margin: 3px 4px 0 0; width: 24x; height: 24px;"></a>
 
