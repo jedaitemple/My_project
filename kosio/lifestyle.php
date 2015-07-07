@@ -130,8 +130,20 @@ $sql = "SELECT number,link,username,topic,links,image,date FROM links ORDER by n
 	if($dbtopic=='lifestyle'){
 $form = <<<EOT
 	<html>
-	<head>
-			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+		<head>
+
+
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+	
+
+		<script src="//api.linkedin.com/v1/people/~/shares?format=json" type="text/javascript"></script>
+</head>
+		<body>
+
+<div class="press">
+<div id="titlebar-5064-3" class="titlebar"> 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 $('#share_button').click(function(e){
@@ -139,9 +151,9 @@ e.preventDefault();
 FB.ui(
 {
 method: 'feed',
-name: 'This is the content of the "name" field.',
-link: ' http://www.hyperarts.com/',
-picture: 'http://www.hyperarts.com/external-xfbml/share-image.gif',
+name: '.',
+link: '$dblinks',
+picture: '$dbimage',
 caption: 'Great job'
 });
 });
@@ -155,7 +167,6 @@ caption: 'Great job'
       version    : 'v2.3'
     });
   };
-
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
@@ -164,16 +175,36 @@ caption: 'Great job'
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-</head>
-		
-		<body>
-<div class="feeditem item-i3 item-5064-3" id="aid-236281278" timestamp="1435855458">
-<div class="press">
-<div id="titlebar-5064-3" class="titlebar"> 
-		<a href="#" onclick="www.google.bg"><img src="images/button_google.png" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
+		<script type="text/javascript">
+FB.init({appId: "721882704604585", status: true, cookie: true});
+  function share_me() {
+    FB.ui({
+      method: 'feed',
+      app_id: '721882704604585',
+      link: '$dblinks',
+      picture: '$dbimage',
+     
+    },
+    function(response){
+      if(response && response.post_id) {
+        self.location.href = 'http://localhost/My_project/kosio/user.php'
+      }
+      else {
+        self.location.href = 'http://localhost/My_project/kosio/user.php'
+      }
+    });
+  }
+</script>
 			<a href="#" onclick="share_me()"><img id = "share_button" src = "images/facebook.jpg" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
-			 <a href="#" onclick="www.google.bg"><img src="images/t.png"  style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
-			<a href="#" onclick="www.google.bg"><img src="images/link.png"  style="margin: 3px 4px 0 0; width: 24x; height: 24px;"></a>
+		 <a href="https://plus.google.com/share?url={'$dblinks'}" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"	onclick="javascript:window.open(this.href,
+  '$dblink', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img
+  src="images/button_google.png" alt="Share on Google+"/></a>
+			 
+			<a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?url=$dblinks"
+  data-counturl="https://dev.twitter.com/web/tweet-button">
+Tweet</a>
+			<a id="share_linkedin" tabindex="-1" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=$dblinks" target="_blank"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a>
 
 <img class="scaledImageFitWidth img" src='$dbimage' alt="" width="170" height="76">
  <i id="activityimg-5064-3" class="fa fa-globe icon activityimg" data-original-title="" title=""></i></a></div>
