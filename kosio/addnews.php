@@ -13,6 +13,7 @@ if (isset($_SESSION['id'])) {
 
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +31,7 @@ body {
 
 
 </head>
+
 
 <body>
 <div class="container">
@@ -74,13 +76,10 @@ body {
 if(isset($_POST['submit'])){
 $selected_val = $_POST['topic']; 
 echo "You have selected :" .$selected_val; 
-
-
-		
 		$link1 = $_POST['link'];
 		$link1 = mysql_real_escape_string($_POST['link']);
 	
-		$image = mysql_real_escape_string($_POST['image']);
+		$image =' ';
 		$link = mysqli_connect("localhost", "root", "", "kosio");
 		
 		$topic=$selected_val;
@@ -105,9 +104,16 @@ if($link === false){
         die('error: ' . curl_error($ch));
     }
     curl_close($ch);
+
+
+/*** discard white space ***/
+
+
     $d = new DOMDocument();
     @$d->loadHTML($res);
 	 $d->preserveWhiteSpace = false;
+$images = $d->getElementsByTagName('img');
+
 
 
     $output = array(
@@ -118,17 +124,47 @@ if($link === false){
     );
     $x = new DOMXPath($d);
     $title = $x->query("//title");
+	$flag=0;
     if ($title->length > 0) {
         $output['title'] = $title->item(0)->textContent;
     }
 	
+	$str = implode(',', $output);
+	require_once('additions/simple_html_dom.php');
+	require_once('additions/url_to_absolute.php'); // get image absolute url.
+// options
+$biggestImage = 'path to "no image found" image'; // Is returned when no images are found.
+// process
+$maxSize = -1;
+$visited = array();
+$url=$link1;
+$html = file_get_html($url);
+// loop images
+foreach($html->find('img') as $element) {
+    $src = $element->src;
+    if($src=='')continue;// it happens on your test url
+    $imageurl = url_to_absolute($url, $src);//get image absolute url
+    // ignore already seen images, add new images
+    if(in_array($imageurl, $visited))continue;
+    $visited[]=$imageurl;
+    // get image
+    $image=@getimagesize($imageurl);// get the rest images width and height
+    if (($image[0] * $image[1]) > $maxSize) {   
+        $maxSize = $image[0] * $image[1];  //compare sizes
+        $biggest_img = $imageurl;
+    }
+}
+$image=$biggest_img; //return the biggest found image
+
+	
+
+// process
+
 $tz = 'Europe/Sofia';
 $timestamp = time();
 $dt = new DateTime("now", new DateTimeZone($tz)); 
 $dt->setTimestamp($timestamp); 
 $date=$dt->format('d.m.Y, H:i:s');
-	$str = implode(',', $output);
-	echo $str;
 	$sql = "INSERT INTO links (number, link, username,topic,links,image,date) VALUES (0, '$str', '$usname','$topic','$link1','$image','$date')";
 	print_r($output);
 	
@@ -179,8 +215,7 @@ body {
 <option value="comics">comics</option>
 
 </select>
-				<h2>select link of the image</h2>
-				<input placeholder = "image" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;" type = "text" name = "image" required/><br>
+			
 				<input class = "button" type = "submit" value = "ADD the news" name = "submit" />
 			</form>	
 		</div>

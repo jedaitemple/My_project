@@ -60,21 +60,14 @@ body {
 			<li><a href="index.php">Logout</a></li>
     </ul>               </div>
 
-		<div class="three columns">
-
- <form method="get" class="searchform">
-     <div id="magnify"><img src="images/m.png" alt="magnify"></div>
-     <div><input name="s" class="s" value="Search" id="searchsubmit" onfocus="if (this.value == 'Search') this.value = '';" type="text"></div>
-     <div><input class="searchsubmit" value="" type="submit"></div>
- </form>          
-
- </div>
+	
                      </div>
      </div>
  </div>
  <center>
   
-  <h1>All News</h1>
+   <p style="font-family: 'Arvo', 'Corbel', 'Calibri', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Myriad', 'Verdana', sans-serif; font-size: 28px; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3); line-height: 28px;">My <span class="e3o0356g51" id="e3o0356g51_7" style="height: 28px;">news</span></p><br>
+  
   <div class="container">
         <div class="row">
             <div class="twelve columns" id="imenu">
@@ -98,7 +91,12 @@ body {
  </center>
  
 </div>
-
+<center>
+<form class="form-wrapper cf">
+        <input type="text" placeholder="Search here..." required>
+        <button type="submit">Search</button>
+    </form>  
+</center>
  </body>
 
 

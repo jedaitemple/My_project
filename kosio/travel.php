@@ -60,15 +60,6 @@ background:  #ffffff url("images/green.jpg") repeat-y;
 			<li><a href="index.php">Logout</a></li>
     </ul>               </div>
 
-		<div class="three columns">
-
- <form method="get" class="searchform">
-     <div id="magnify"><img src="images/m.png" alt="magnify"></div>
-     <div><input name="s" class="s" value="Search" id="searchsubmit" onfocus="if (this.value == 'Search') this.value = '';" type="text"></div>
-     <div><input class="searchsubmit" value="" type="submit"></div>
- </form>          
-
- </div>
                      </div>
      </div>
  </div>
@@ -99,6 +90,12 @@ background:  #ffffff url("images/green.jpg") repeat-y;
  </center>
  
 </div>
+<center>
+<form class="form-wrapper cf">
+        <input type="text" placeholder="Search here..." required>
+        <button type="submit">Search</button>
+    </form>  
+</center>
 
  </body>
 
