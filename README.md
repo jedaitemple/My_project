@@ -2,7 +2,7 @@
 # My_project
 This is web app with which you can share news in social sites.
 # Future plan
-Ready with the sharing
-I only need
+I made it.I put image from URL-website.
+Incredable how it works
 #add email validation
 #The Owner is Konstantin Kostov
