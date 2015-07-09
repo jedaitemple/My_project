@@ -85,7 +85,8 @@ body {
 	   <li><a href='health.php'>Health</a></li>
 		  <li><a href='lifestyle.php'>Lifestyle and fashion</a></li>
 		 <li><a href='#'>Environment</a></li>
-		  <li><a href='#'>Satire</a></li>
+		
+		 <li><a href='peoplenews.php'>peoples news</a></li>
 		  <li><a href='comics.php'>Comics</a></li>
   
  </center>

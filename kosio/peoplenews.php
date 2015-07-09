@@ -11,27 +11,24 @@ if (isset($_SESSION['id'])) {
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
-
-
-
-
 <title><?php echo $usname ;?> - Best news</title>
 <link rel="stylesheet" type="text/css" href="css/menu.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="css/user.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/kosio.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/user.css" media="screen" />
 <style type="text/css">
 body {
-background:  #ffffff url("images/green.jpg") repeat-y;
+   background:  #ffffff url("images/green.jpg") repeat-y;
 }
 </style>
 
-</head>
 
+</head>
 
 <body>
 <div class="container">
@@ -39,9 +36,10 @@ background:  #ffffff url("images/green.jpg") repeat-y;
             <div class="twelve columns" id="imenu">
             <div id="nav" class="nine columns">
              <div id="home"><a href="#"><img src="images/tivenews.gif" alt="home"></a></div>                           
-     <ul id="nav_menu"> 
-<li><A HREF="goBack()">refresh</A></li>
-      
+     <ul id="nav_menu">
+        <li><a href="#">Refresh</a>
+             
+         </li>
          <li><a href="#">Sort By</a>
          
                  
@@ -55,18 +53,21 @@ background:  #ffffff url("images/green.jpg") repeat-y;
             
          </li>
 		
-         <li><a href="#">About</a></li>
-         <li><a href="mynews.php">My news</a></li>
-		 
-		    <li><a href="#"><?php echo $result;?></a></li>
-			         <li><a href="index.php">Logout</a></li>
 
+         <li><a href="#">About</a></li>
+        <li><a href="mynews.php">My news</a></li>
+		    <li><a href="#"><?php echo $result;?></a></li>
+			<li><a href="index.php">Logout</a></li>
     </ul>               </div>
 
+	
+                     </div>
      </div>
  </div>
  <center>
-<p style="font-family: 'Arvo', 'Corbel', 'Calibri', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Myriad', 'Verdana', sans-serif; font-size: 28px; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3); line-height: 28px;">All <span class="e3o0356g51" id="e3o0356g51_7" style="height: 28px;">news</span></p><br>
+  
+   <p style="font-family: 'Arvo', 'Corbel', 'Calibri', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Myriad', 'Verdana', sans-serif; font-size: 28px; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3); line-height: 28px;">My <span class="e3o0356g51" id="e3o0356g51_7" style="height: 28px;">news</span></p><br>
+  
   <div class="container">
         <div class="row">
             <div class="twelve columns" id="imenu">
@@ -76,6 +77,7 @@ background:  #ffffff url("images/green.jpg") repeat-y;
        	<li><a href='addnews.php'>Add new News</a></li>
 
    <li><a href='user.php'>All news</a></li>
+   
    <li class='#'><a href='business.php'>Business and finace</a>
       <li class='sport.php'><a href='sport.php'>Sports</a>
    <li><a href='culture.php'>Culture and entertainment</a></li>
@@ -83,20 +85,18 @@ background:  #ffffff url("images/green.jpg") repeat-y;
      <li><a href='travel.php'> Travel</a></li>
 	   <li><a href='health.php'>Health</a></li>
 		  <li><a href='lifestyle.php'>Lifestyle and fashion</a></li>
-		 <li><a href='peoplenews.php'>peoples news</a></li>
+	
 		  <li><a href='comics.php'>Comics</a></li>
   
  </center>
  
-</div>  
+</div>
 <center>
 <form class="form-wrapper cf">
         <input type="text" placeholder="Search here..." required>
         <button type="submit">Search</button>
     </form>  
 </center>
-
-
  </body>
 
 
@@ -104,25 +104,26 @@ background:  #ffffff url("images/green.jpg") repeat-y;
  
 </html>
 <?php
-
-$sql = "SELECT number,link,username,topic,links,image,date FROM links ORDER by number DESC";
+error_reporting(0);
+ini_set('display_errors', 0);
+$sql = "SELECT number, head, username,topic,image,date FROM mynews ORDER by number DESC";
 	$query = mysqli_query($dbCon, $sql);
 	$row = mysqli_fetch_row($query);
 	$uid = $row[0];
 	$i=$uid;
 	while($i>=0){
-	$sql = "SELECT number,link,username,topic,links,image,date FROM links WHERE number='$i'";
+	$sql = "SELECT number, head, username,topic,image,date FROM mynews WHERE number='$i'";
 	$i--;
 	$query = mysqli_query($dbCon, $sql);
 	$row = mysqli_fetch_row($query);
 	$uid = $row[0];
-	$dblink = $row[1];
-	$dbusername = $row[2];
-	$dbtopic = $row[3];
-	$dblinks = $row[4];
-	$dbimage = $row[5];
-	$dbdate = $row[6];
+	$dbhead=$row[1];
+	$dbusername=$row[2];
+	$dbtopic=$row[3];
+	$dbimage=$row[4];
+	$dbdate=$row[5];
 	$n=$uid;
+	
 $form = <<<EOT
 		<html>
 		<head>
@@ -147,7 +148,7 @@ FB.ui(
 {
 method: 'feed',
 name: '.',
-link: '$dblinks',
+link: '$dbhead',
 picture: '$dbimage',
 caption: 'Great job'
 });
@@ -176,7 +177,7 @@ FB.init({appId: "721882704604585", status: true, cookie: true});
     FB.ui({
       method: 'feed',
       app_id: '721882704604585',
-      link: '$dblinks',
+      link: '$dbhead',
       picture: '$dbimage',
      
     },
@@ -191,27 +192,30 @@ FB.init({appId: "721882704604585", status: true, cookie: true});
   }
 </script>
 			<a href="#" onclick="share_me()"><img id = "share_button" src = "images/facebook.jpg" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
-		 <a href="https://plus.google.com/share?url={'$dblinks'}" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"	onclick="javascript:window.open(this.href,
-  '$dblink', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img
+		 <a href="https://plus.google.com/share?url={'$dbhead'}" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"	onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img
   src="images/button_google.png" alt="Share on Google+"/></a>
 			 
 			<a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet?url=$dblinks"
+  href="https://twitter.com/intent/tweet?url=$dbhead"
   data-counturl="https://dev.twitter.com/web/tweet-button">
 Tweet</a>
-			<a id="share_linkedin" tabindex="-1" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=$dblinks" target="_blank"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a>
+			<a id="share_linkedin" tabindex="-1" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=$dbgead" target="_blank"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a>
 
 <img class="scaledImageFitWidth img" src='$dbimage' alt="" width="170" height="76">
  <i id="activityimg-5064-3" class="fa fa-globe icon activityimg" data-original-title="" title=""></i></a></div>
- <a id="itemlink-5064-3" class="itemlink" href="$dblinks" target="_blank" hasmore="0" feedurl="http://espn.go.com" feedid="103683" aid="236281278" cleanhref="http://espn.go.com/nfl/story/_/id/13187628/duke-ihenacho-washington-redskins-rants-inequity-nba-nfl-deals" cleanuri="13187628">
- <span><div class="headlinewrapper"><p id="headline-5064-3" class="headline">$dblink</p></div><p id="date-5064-3" class="date">$dbdate</p><div class="textwrapper">
+ <a id="itemlink-5064-3" class="itemlink" href="$dbhead" target="_blank" hasmore="0" feedurl="http://espn.go.com" feedid="103683" aid="236281278" cleanhref="http://espn.go.com/nfl/story/_/id/13187628/duke-ihenacho-washington-redskins-rants-inequity-nba-nfl-deals" cleanuri="13187628">
+ <span><div class="headlinewrapper"><p id="headline-5064-3" class="headline">$dbhead</p></div><p id="date-5064-3" class="date">$dbdate</p><div class="textwrapper">
  <p id="text-5064-3" class="text"></p></div></span></a></div></div>
  </body>
  </html>
 EOT;
 	
 	echo $form;
+	
+	
+	
 	}
 	
-		
+	
 ?>

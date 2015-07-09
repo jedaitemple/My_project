@@ -89,7 +89,7 @@ $timestamp = time();
 $dt = new DateTime("now", new DateTimeZone($tz)); 
 $dt->setTimestamp($timestamp); 
 $date=$dt->format('d.m.Y, H:i:s');
-	$sql = "INSERT INTO links (number, link, username,topic,links,image,date) VALUES (0, '$head', '$usname','$topic','','$image','$date')";
+	$sql = "INSERT INTO mynews (number, head, username,topic,image,date) VALUES (0, '$head', '$usname','$topic','$image','$date')";
 	
 	
 	
