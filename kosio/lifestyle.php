@@ -197,8 +197,14 @@ FB.init({appId: "721882704604585", status: true, cookie: true});
   '$dblink', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img
   src="images/button_google.png" alt="Share on Google+"/></a>
 			 
-			<a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'$dblinks';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			  <a href="https://twitter.com/share" class="twitter-share-button" data-url="$dblinks" data-via="Kosio1234" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			 
+			 
+			 
+			 
+			 
+			 
 <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
 <script type="IN/Share" data-url="$dblinks"></script>
 <img class="scaledImageFitWidth img" src='$dbimage' alt="" width="170" height="76">

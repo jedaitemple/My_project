@@ -91,9 +91,9 @@ background:  #ffffff url("images/green.jpg") repeat-y;
 </div>  
 <center>
 <form class="form-wrapper cf">
-        <input type="text" placeholder="Search here..." required>
-        <button type="submit">Search</button>
-    </form>  
+        <input type="text" placeholder="Search here..." required>
+        <button type="submit">Search</button>
+    </form>  
 </center>
 
 
@@ -104,7 +104,6 @@ background:  #ffffff url("images/green.jpg") repeat-y;
  
 </html>
 <?php
-
 $sql = "SELECT number,link,username,topic,links,image,date FROM links ORDER by number DESC";
 	$query = mysqli_query($dbCon, $sql);
 	$row = mysqli_fetch_row($query);
@@ -126,16 +125,12 @@ $sql = "SELECT number,link,username,topic,links,image,date FROM links ORDER by n
 $form = <<<EOT
 		<html>
 		<head>
-
-
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
 	
-
 		<script src="//api.linkedin.com/v1/people/~/shares?format=json" type="text/javascript"></script>
 </head>
 		<body>
-
 <div class="press">
 <div id="titlebar-5064-3" class="titlebar"> 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
@@ -194,9 +189,16 @@ FB.init({appId: "721882704604585", status: true, cookie: true});
 		 <a href="https://plus.google.com/share?url={'$dblinks'}" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"	onclick="javascript:window.open(this.href,
   '$dblink', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img
   src="images/button_google.png" alt="Share on Google+"/></a>
+			 <a href="https://twitter.com/share" class="twitter-share-button" data-url="$dblinks" data-via="Kosio1234" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 			 
-			<a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'$dblinks';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			 
+			 
+			 
+			 
+			 
+			 
+			 
 <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
 <script type="IN/Share" data-url="$dblinks"></script>
 <img class="scaledImageFitWidth img" src='$dbimage' alt="" width="170" height="76">
