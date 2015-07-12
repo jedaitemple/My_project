@@ -51,6 +51,28 @@ if (check_email_address($email)) {
     echo $email . ' is not a valid email address.';
 }
 
+
+
+$to      = $email; // Send email to our user
+$subject = 'Signup | Verification'; // Give the email a subject 
+$message = '
+ 
+
+ 
+------------------------
+Username: '.$username.'
+Password: '.$password.'
+------------------------
+ 
+Please click this link to activate your account:
+kosio123'.$email.'
+ 
+'; // Our message above including the link
+                     
+$headers = 'From:Bestnews.com' . "\r\n"; // Set from headers
+mail($to, $subject, $message, $headers); // Send our email
+
+
 			
 			$sql = "INSERT INTO kosio1 (id, username, password, email,activated) VALUES (0, '$username', '$pass1', '$email','1')";
 if(mysqli_query($link, $sql)){
@@ -65,7 +87,7 @@ if(mysqli_query($link, $sql)){
 			exit();
 		}
 		
-		//header('Location:index.php');
+		header('Location:index.php');
 		
 } else {
 	
