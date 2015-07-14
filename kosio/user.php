@@ -46,10 +46,9 @@ background:  #ffffff url("images/green.jpg") repeat-y;
          
                  
                      <ul>
-                         <li><a href="#">Front Page</a></li>
-                         <li><a href="#">Blog Blocks</a></li>
-                         <li><a href="#">Pinboard</a></li>
-                         <li><a href="#">Press Reliese</a></li>
+                         <li><a href="#">Topic</a></li>
+                         <li><a href="#">Date</a></li>
+                        
                      </ul>
               
             
@@ -91,9 +90,11 @@ background:  #ffffff url("images/green.jpg") repeat-y;
 </div>  
 <center>
 <form class="form-wrapper cf">
-        <input type="text" placeholder="Search here..." required>
-        <button type="submit">Search</button>
+      <input type="text" name="mysearch" placeholder="Search here..." required>
+	  
+<button type="button" onclick="location.href='search.php';" value="Search">Search</button>
     </form>  
+	</form>
 </center>
 
 
