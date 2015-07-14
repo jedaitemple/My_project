@@ -122,6 +122,21 @@ $sel_db = mysql_select_db("kosio",$conn_db) or die();
 <link rel="stylesheet" type="text/css" href="css/menu.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/kosio.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/user.css" media="screen" />
+<div>
+    <style scoped>
+
+        .button-success,
+
+        .button-success {
+            background: rgb(28, 184, 65); /* this is a green */
+        }
+
+  
+
+    </style>
+
+</div>
+
 </head>
 
 <body>
@@ -132,7 +147,7 @@ $sel_db = mysql_select_db("kosio",$conn_db) or die();
 <input  placeholder="old password" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px; type="password" name="old_password" value="" required ></br>
 <input    placeholder="new password"   style = "margin-top:5px;border: 1px solid black;width:317px;height:40px; type="password" name="new_password" value="" required></br>
 <input   placeholder="confirm password"   style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;     type="password" name="con_password" value="" required ></br>
-<p align="center"><input type="submit" value="Change" name="change_pwd"></p></br>
+<button value="Change" name="change_pwd"  class="button-success pure-button"> Change</button>
 </form>
 
 
@@ -141,7 +156,7 @@ $sel_db = mysql_select_db("kosio",$conn_db) or die();
 <input placeholder="old email" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px; type="text" name="old_email" value="" required ></br>
 <input placeholder="new email"  style = "margin-top:5px;border: 1px solid black;width:317px;height:40px; type="text" name="new_email" value="" required></br>
 <input  placeholder="confirm email" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;    type="text" name="con_email" value="" required ></br>
-<p align="center"><input type="submit" value="Change" name="change_email"></p>
+<button value="Change" name="change_email"  class="button-success pure-button"> Change</button>
 </form>
 </body>
 </html>
