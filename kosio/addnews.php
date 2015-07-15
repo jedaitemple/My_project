@@ -46,19 +46,14 @@ body {
          <li><a href="#">Sort By</a>
          
                  
-                     <ul>
-                         <li><a href="#">Front Page</a></li>
-                         <li><a href="#">Blog Blocks</a></li>
-                         <li><a href="#">Pinboard</a></li>
-                         <li><a href="#">Press Reliese</a></li>
-                     </ul>
+        
               
             
          </li>
 		
 
-         <li><a href="#">About</a></li>
-        <li><a href="mynews.php">Show History</a></li>
+         <li><a href="about.php">About</a></li>
+        <li><a href="mynews.php">My News</a></li>
 		  <li><a href="user.php">All news</a></li>
 		    <li><a href="#"><?php echo $result;?></a></li>
     </ul>               </div>

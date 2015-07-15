@@ -43,18 +43,13 @@ background:  #ffffff url("images/green.jpg") repeat-y;
          <li><a href="#">Sort By</a>
          
                  
-                     <ul>
-                         <li><a href="#">Front Page</a></li>
-                         <li><a href="#">Blog Blocks</a></li>
-                         <li><a href="#">Pinboard</a></li>
-                         <li><a href="#">Press Reliese</a></li>
-                     </ul>
+                
               
             
          </li>
 		
 
-         <li><a href="#">About</a></li>
+       <li><a href="about.php">About</a></li>
         <li><a href="mynews.php">My news</a></li>
 		      <li><a href="myprofil.php"><?php echo $result;?></a></li>
 			<li><a href="index.php">Logout</a></li>
