@@ -66,3 +66,124 @@ background:  #ffffff url("images/green.jpg") repeat-y;
 
  </body>
  </html>
+ <?php
+ if (isset($_GET['search'])) {
+ $my_status = $_GET['search'];
+error_reporting(0);
+ini_set('display_errors', 0);
+$sql = "SELECT number,link,username,topic,links,image,date FROM links ORDER by number DESC";
+	$query = mysqli_query($dbCon, $sql);
+	$row = mysqli_fetch_row($query);
+	$uid = $row[0];
+	$i=$uid;
+	while($i>=0){
+	$sql = "SELECT number,link,username,topic,links,image,date FROM links WHERE number='$i'";
+	$i--;
+	$query = mysqli_query($dbCon, $sql);
+	$row = mysqli_fetch_row($query);
+	$uid = $row[0];
+	$dblink = $row[1];
+	$dbusername = $row[2];
+	$dbtopic = $row[3];
+	$dblinks = $row[4];
+	$dbimage = $row[5];
+	$dbdate = $row[6];
+	$n=$uid;
+
+
+	if (strpos($dblink,$my_status) !== false) {
+
+$form = <<<EOT
+		<html>
+		<head>
+
+
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+	
+
+		<script src="//api.linkedin.com/v1/people/~/shares?format=json" type="text/javascript"></script>
+</head>
+		<body>
+
+<div class="press">
+<div id="titlebar-5064-3" class="titlebar"> 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('#share_button').click(function(e){
+e.preventDefault();
+FB.ui(
+{
+method: 'feed',
+name: '.',
+link: '$dblinks',
+picture: '$dbimage',
+caption: 'Great job'
+});
+});
+});
+</script>
+ <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '721882704604585',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+  };
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+		<script type="text/javascript">
+FB.init({appId: "721882704604585", status: true, cookie: true});
+  function share_me() {
+    FB.ui({
+      method: 'feed',
+      app_id: '721882704604585',
+      link: '$dblinks',
+      picture: '$dbimage',
+     
+    },
+    function(response){
+      if(response && response.post_id) {
+        self.location.href = 'http://localhost/My_project/kosio/user.php'
+      }
+      else {
+        self.location.href = 'http://localhost/My_project/kosio/user.php'
+      }
+    });
+  }
+</script>
+			<a href="#" onclick="share_me()"><img id = "share_button" src = "images/facebook.jpg" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
+		 <a href="https://plus.google.com/share?url={'$dblinks'}" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"	onclick="javascript:window.open(this.href,
+  '$dblink', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img
+  src="images/button_google.png" alt="Share on Google+"/></a>
+  
+   <a href="https://twitter.com/share" class="twitter-share-button" data-url="$dblinks" data-via="Kosio1234" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			 
+			 
+  
+  
+		<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<script type="IN/Share" data-url="$dblinks"></script>
+<img class="scaledImageFitWidth img" src='$dbimage' alt="" width="170" height="76">
+ <i id="activityimg-5064-3" class="fa fa-globe icon activityimg" data-original-title="" title=""></i></a></div>
+ <a id="itemlink-5064-3" class="itemlink" href="$dblinks" target="_blank" hasmore="0" feedurl="http://espn.go.com" feedid="103683" aid="236281278" cleanhref="http://espn.go.com/nfl/story/_/id/13187628/duke-ihenacho-washington-redskins-rants-inequity-nba-nfl-deals" cleanuri="13187628">
+ <span><div class="headlinewrapper"><p id="headline-5064-3" class="headline">$dblink</p></div><p id="date-5064-3" class="date">$dbdate</p><div class="textwrapper">
+ <p id="text-5064-3" class="text"></p></div></span></a></div></div>
+ </body>
+ </html>
+EOT;
+	
+	echo $form;
+	}
+	}
+	}
+?>

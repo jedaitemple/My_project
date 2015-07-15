@@ -88,12 +88,12 @@ body {
 		  <li><a href='comics.php'>Comics</a></li>
   
  </center>
- <center>
-<form class="form-wrapper cf">
-        <input type="text" placeholder="Search here..." required>
-        <button type="submit">Search</button>
-    </form>  
+<center>
+<form action='search.php' class="form-wrapper cf"    method='GET'>
+<input type='text'placeholder="Search here..." required   name='search'></br></br>
+<button  type='submit' name='submit' value='Search source code' >Search</button>
 </center>
+</form>
  
 </div>
 
