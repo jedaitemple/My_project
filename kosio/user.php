@@ -54,7 +54,7 @@ background:  #ffffff url("images/green.jpg") repeat-y;
             
          </li>
 		
-         <li><a href="#">About</a></li>
+         <li><a href="about.php">About</a></li>
          <li><a href="mynews.php">My news</a></li>
 		 
 		    <li><a href="myprofil.php"><?php echo $result;?></a></li>
