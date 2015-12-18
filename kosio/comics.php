@@ -13,22 +13,25 @@ if (isset($_SESSION['id'])) {
 
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title><?php echo $usname ;?> - Best news</title>
 <link rel="stylesheet" type="text/css" href="css/menu.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="css/kosio.css" media="screen" />
+
 <link rel="stylesheet" type="text/css" href="css/user.css" media="screen" />
 <style type="text/css">
 body {
-   background:  #ffffff url("images/green.jpg") repeat-y;
+    background:  #ffffff url("images/green.jpg") no-repeat;
 }
+
 </style>
 
 
 </head>
+
 
 <body>
 <div class="container">
@@ -42,173 +45,140 @@ body {
          </li>
          <li><a href="#">Sort By</a>
          
-            
+                 
+        
+              
             
          </li>
 		
 
-       <li><a href="about.php">About</a></li>
-         <li><a href="mynews.php">My news</a></li>
-		    <li><a href="myprofil.php"><?php echo $result;?></a></li>
-			<li><a href="index.php">Logout</a></li>
+         <li><a href="about.php">About</a></li>
+        <li><a href="mynews.php">My News</a></li>
+		  <li><a href="user.php">All news</a></li>
+		    <li><a href="#"><?php echo $result;?></a></li>
     </ul>               </div>
 
-	
+
                      </div>
      </div>
  </div>
  <center>
-  
-<p style="font-family: 'Arvo', 'Corbel', 'Calibri', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Myriad', 'Verdana', sans-serif; font-size: 28px; color: #ffffff; text-shadow: 0px 1px 2px rgba(1,1,1,0.3); line-height: 28px;">Comics <span class="e3o0356g51" id="e3o0356g51_7" style="height: 28px;">news</span></p><br>
-  
-  <div class="container">
-        <div class="row">
-            <div class="twelve columns" id="imenu">
-            <div id="nav" class="nine columns">
-                           
-     <ul id="nav_menu">
-       	<li><a href='addnews.php'>Add new News</a></li>
-
-   <li><a href='user.php'>All news</a></li>
-   <li class='#'><a href='business.php'>Business and finace</a>
-      <li class='sport.php'><a href='sport.php'>Sports</a>
-   <li><a href='culture.php'>Culture and entertainment</a></li>
-   <li><a href='science.php'>Science and Technology</a></li>
-     <li><a href='travel.php'> Travel</a></li>
-	   <li><a href='health.php'>Health</a></li>
-		  <li><a href='lifestyle.php'>Lifestyle and fashion</a></li>
-	 <li><a href='peoplenews.php'>peoples news</a></li>
-		  <li><a href='comics.php'>Comics</a></li>
-  
+  <h1>Add a news</h1>
+    <li><a href="own.php">Create your own news</a></li>
  </center>
- 
-</div>
-<center>
-<form action='search.php' class="form-wrapper cf"    method='GET'>
-<input type='text'placeholder="Search here..." required   name='search'></br></br>
-<button  type='submit' name='submit' value='Search source code' >Search</button>
-</center>
-</form>
-
- </body>
-
-
-
- 
-</html>
-<?php
-error_reporting(0);
-ini_set('display_errors', 0);
-$sql = "SELECT number,link,username,topic,links,image,date FROM links ORDER by number DESC";
-	$query = mysqli_query($dbCon, $sql);
-	$row = mysqli_fetch_row($query);
-	$uid = $row[0];
-	$i=$uid;
-	while($i>=0){
-	$sql = "SELECT number,link,username,topic,links,image,date FROM links WHERE number='$i'";
-	$i--;
-	$query = mysqli_query($dbCon, $sql);
-	$row = mysqli_fetch_row($query);
-	$uid = $row[0];
-	$dblink = $row[1];
-	$dbusername = $row[2];
-	$dbtopic = $row[3];
-	$dblinks = $row[4];
-	$dbimage = $row[5];
-	$dbdate = $row[6];
-	$n=$uid;
-	if($dbtopic=='comics'){
-$form = <<<EOT
-		<html>
-		<head>
-
-
-	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
-	
-
-		<script src="//api.linkedin.com/v1/people/~/shares?format=json" type="text/javascript"></script>
-</head>
-		<body>
-
-<div class="press">
-<div id="titlebar-5064-3" class="titlebar"> 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-$('#share_button').click(function(e){
-e.preventDefault();
-FB.ui(
-{
-method: 'feed',
-name: '.',
-link: '$dblinks',
-picture: '$dbimage',
-caption: 'Great job'
-});
-});
-});
-</script>
- <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '721882704604585',
-      xfbml      : true,
-      version    : 'v2.3'
-    });
-  };
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-		<script type="text/javascript">
-FB.init({appId: "721882704604585", status: true, cookie: true});
-  function share_me() {
-    FB.ui({
-      method: 'feed',
-      app_id: '721882704604585',
-      link: '$dblinks',
-      picture: '$dbimage',
-     
-    },
-    function(response){
-      if(response && response.post_id) {
-        self.location.href = 'http://localhost/My_project/kosio/user.php'
-      }
-      else {
-        self.location.href = 'http://localhost/My_project/kosio/user.php'
-      }
-    });
-  }
-</script>
-		<a href="#" onclick="share_me()"><img id = "share_button" src = "images/facebook.jpg" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"></a>
-		 <a href="https://plus.google.com/share?url={'$dblinks'}" style="margin: 3px 4px 0 0; width: 24px; height: 24px;"	onclick="javascript:window.open(this.href,
-  '$dblink', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img
-  src="images/button_google.png" alt="Share on Google+"/></a>
-	
-	 <a href="https://twitter.com/share" class="twitter-share-button" data-url="$dblinks" data-via="Kosio1234" data-count="none">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-			 
-			 
-			 
-			<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-<script type="IN/Share" data-url="$dblinks"></script>
-			
-<img class="scaledImageFitWidth img" src='$dbimage' alt="" width="170" height="76">
- <i id="activityimg-5064-3" class="fa fa-globe icon activityimg" data-original-title="" title=""></i></a></div>
- <a id="itemlink-5064-3" class="itemlink" href="$dblinks" target="_blank" hasmore="0" feedurl="http://espn.go.com" feedid="103683" aid="236281278" cleanhref="http://espn.go.com/nfl/story/_/id/13187628/duke-ihenacho-washington-redskins-rants-inequity-nba-nfl-deals" cleanuri="13187628">
- <span><div class="headlinewrapper"><p id="headline-5064-3" class="headline">$dblink</p></div><p id="date-5064-3" class="date">$dbdate</p><div class="textwrapper">
- <p id="text-5064-3" class="text"></p></div></span></a></div></div>
  </body>
  </html>
-EOT;
-	
-	echo $form;
+<?php
+if(isset($_POST['submit'])){
+$selected_val = "sport"; 
+echo "You have selected :" .$selected_val; 
+		$link1 = $_POST['link'];
+		$link1 = mysql_real_escape_string($_POST['link']);
+
+		$image =' ';
+		$link = mysqli_connect("localhost", "root", "", "kosio");
+		
+		$topic=$selected_val;
+		$input = @file_get_contents($link1) or die("Could not access file: $link1");
+$html = file_get_contents($link1);
+function curl_get_file_size( $url ) {
+  // Assume failure.
+  $result = -1;
+
+  $curl = curl_init( $url );
+
+  // Issue a HEAD request and follow any redirects.
+  curl_setopt( $curl, CURLOPT_NOBODY, true );
+  curl_setopt( $curl, CURLOPT_HEADER, true );
+  curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+  curl_setopt( $curl, CURLOPT_FOLLOWLOCATION, true ); 
+
+  $data = curl_exec( $curl );
+  curl_close( $curl );
+
+  if( $data ) {
+    $content_length = "unknown";
+    $status = "unknown";
+
+    if( preg_match( "/^HTTP\/1\.[01] (\d\d\d)/", $data, $matches ) ) {
+      $status = (int)$matches[1];
+    }
+
+    if( preg_match( "/Content-Length: (\d+)/", $data, $matches ) ) {
+      $content_length = (int)$matches[1];
+    }
+
+    // http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+    if( $status == 200 || ($status > 300 && $status <= 308) ) {
+      $result = $content_length;
+    }
+  }
+echo $result;
+  return $result;
+}
+$dom = new DOMDocument();
+@$dom->loadHTML($html);
+
+// grab all the on the page
+$xpath = new DOMXPath($dom);
+$hrefs = $xpath->evaluate("/html/body//a");
+
+for ($i = 0; $i < $hrefs->length; $i++) {
+       $href = $hrefs->item($i);
+       $url = $href->getAttribute('href');
+       echo $url.'<br />';
+$file_size = curl_get_file_size($url);
+
+}
+
+ 
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
 	}
-	}
-	
+}
 ?>
+<html>
+
+		<head>
+			<title>BESTNEWS - Registration</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+			
+			
+			
+			<style type="text/css">
+			
+body {
+    background:  #ffffff url("images/green.jpg") no-repeat;
+}
+
+</style>
+		</head>
+		
+		<body>
+		
+		
+		
+	
+		<div id="form">
+			<form align = "center" action = "comics.php" method = "POST">
+				<h2>select link of publication</h2>
+				<input placeholder = "link" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;" type = "text" name = "link" required/><br>
+				<h2>select type of the news</h2>
+				<select name="topic" style = "margin-top:5px;border: 1px solid black;width:317px;height:40px;">
+<option     value="business">business</option>
+<option value="sport">sport</option>
+<option value="culture">culture</option>
+<option value="science">science</option>
+<option value="lifestyle">lifestyle</option>
+<option value="health">health</option>
+<option value="travel">travel</option>
+<option value="comics">comics</option>
+<option value="education">education</option>
+</select>
+
+				<input class = "button" type = "submit" value = "ADD the news" name = "submit" />
+			</form>	
+		</div>
+		</body>
+</html>		
